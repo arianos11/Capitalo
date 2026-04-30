@@ -61,7 +61,8 @@ buses/default_bus_layout="res://default_bus_layout.tres"
 
 [gui]
 
-theme/custom_font="res://assets/fonts/m5x7.ttf"
+; theme/custom_font="res://assets/fonts/m5x7.ttf"
+; TODO: drop m5x7.ttf into assets/fonts/ (CC0 from https://managore.itch.io/m5x7) then uncomment
 
 [mobile]
 
