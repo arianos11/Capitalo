@@ -50,6 +50,10 @@ signal shop_upgraded(shop_id, new_level)
 ## param: shop_id: String, spec_id: String
 signal shop_specialization_chosen(shop_id, spec_id)
 
+## Gracz tapnął slot sklepu w CityView (do logiki buy/upgrade).
+## param: shop_id: String, slot_state: String ("empty" / "owned")
+signal shop_slot_tapped(shop_id, slot_state)
+
 
 # ==========================================================================
 # MANAGER SIGNALS
