@@ -1,0 +1,74 @@
+; Capitalo - Godot 4.x project configuration
+;
+; Engine: Godot 4.3+ recommended (4.2 will work but check addon compat)
+; Renderer: Mobile (optimized for iOS/Android)
+;
+; To open: drop tę folder do Godot Project Manager → Import → wybierz project.godot
+
+config_version=5
+
+[application]
+
+config/name="Capitalo"
+config/description="Idle Pixel Tycoon Empire — build your retail empire from zero"
+config/version="0.1.0-dev"
+run/main_scene="res://scenes/main/Main.tscn"
+config/features=PackedStringArray("4.3", "Mobile")
+config/icon="res://assets/sprites/ui/icons/app_icon.png"
+
+[autoload]
+
+EventBus="*res://scripts/autoload/EventBus.gd"
+GameState="*res://scripts/autoload/GameState.gd"
+SaveSystem="*res://scripts/autoload/SaveSystem.gd"
+EconomyManager="*res://scripts/autoload/EconomyManager.gd"
+CampaignSystem="*res://scripts/autoload/CampaignSystem.gd"
+AudioManager="*res://scripts/autoload/AudioManager.gd"
+
+[debug]
+
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/unused_signal=0
+
+[display]
+
+; Portrait orientation (mobile idle game standard)
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/size/mode=0
+window/handheld/orientation=1
+window/stretch/mode="canvas_items"
+window/stretch/aspect="keep"
+
+[rendering]
+
+renderer/rendering_method="mobile"
+renderer/rendering_method.mobile="mobile"
+textures/canvas_textures/default_texture_filter=0
+2d/snap/snap_2d_transforms_to_pixel=true
+2d/snap/snap_2d_vertices_to_pixel=true
+
+[input]
+
+touch_action={
+"deadzone": 0.5,
+"events": [Object(InputEventScreenTouch,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"index":0,"position":Vector2(0, 0),"canceled":false,"pressed":true,"double_tap":false,"script":null)]
+}
+
+[audio]
+
+buses/default_bus_layout="res://default_bus_layout.tres"
+
+[gui]
+
+theme/custom_font="res://assets/fonts/m5x7.ttf"
+
+[mobile]
+
+iOS/icons/icon_1024x1024="res://assets/sprites/ui/icons/app_icon_ios.png"
+iOS/storyboard/use_launch_screen_storyboard=true
+
+[android]
+
+icons/foreground_432x432="res://assets/sprites/ui/icons/app_icon_android_fg.png"
+icons/background_432x432="res://assets/sprites/ui/icons/app_icon_android_bg.png"

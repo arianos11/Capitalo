@@ -1,0 +1,44 @@
+# Godot 4
+.godot/
+*.translation
+export.cfg
+export_presets.cfg
+.import/
+
+# Godot exports
+build/
+exports/
+*.apk
+*.aab
+*.ipa
+*.dmg
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
+
+# Claude Code — personal
+.claude/settings.local.json
+.claude/.credentials.json
+
+# Secrets
+.env
+.env.*
+secrets/
+*.keystore
+*.p12
+*.mobileprovision
+
+# Aseprite working files (large, sources tracked separately if needed)
+# assets/sources/*.aseprite  # uncomment if too big for git
+
+# Save files (player data, do not commit)
+savegame.json
+savegame_backup.json

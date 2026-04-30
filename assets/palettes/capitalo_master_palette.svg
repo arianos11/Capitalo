@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1220" viewBox="0 0 900 1220" style="font-family: Arial, sans-serif;">
+<defs>
+<style>
+  .title { font-size: 24px; font-weight: bold; fill: #1F4E78; }
+  .subtitle { font-size: 14px; fill: #666; font-style: italic; }
+  .group-title { font-size: 16px; font-weight: bold; fill: #333; }
+  .swatch-hex { font-size: 10px; font-family: 'Courier New', monospace; fill: #333; font-weight: bold; }
+  .swatch-name { font-size: 11px; fill: #555; }
+  .swatch-usage { font-size: 9px; fill: #888; font-style: italic; }
+</style>
+</defs>
+
+<!-- White background -->
+<rect width="900" height="1220" fill="#FAFAFA"/>
+
+<!-- Title -->
+<text x="40" y="40" class="title">CAPITALO Master Palette</text>
+<text x="40" y="62" class="subtitle">30 colors • 16-bit retro pixel art • inspired by PICO-8, Stardew Valley, Owlboy</text>
+
+<text x="40" y="105" class="group-title">Neutrals</text>
+<rect x="40" y="120" width="60" height="60" fill="#0F0F1B" stroke="#333" stroke-width="1"/>
+<text x="105" y="134" class="swatch-hex">#0F0F1B</text>
+<text x="105" y="148" class="swatch-name">Deep Black</text>
+<text x="105" y="162" class="swatch-usage">Outline kontur, cienie głę…</text>
+<rect x="198" y="120" width="60" height="60" fill="#1D2B53" stroke="#333" stroke-width="1"/>
+<text x="263" y="134" class="swatch-hex">#1D2B53</text>
+<text x="263" y="148" class="swatch-name">Dark Navy</text>
+<text x="263" y="162" class="swatch-usage">Cienie tła, midnight</text>
+<rect x="356" y="120" width="60" height="60" fill="#3F3F74" stroke="#333" stroke-width="1"/>
+<text x="421" y="134" class="swatch-hex">#3F3F74</text>
+<text x="421" y="148" class="swatch-name">Slate Purple</text>
+<text x="421" y="162" class="swatch-usage">Cienie postaci, midtones</text>
+<rect x="514" y="120" width="60" height="60" fill="#5F574F" stroke="#333" stroke-width="1"/>
+<text x="579" y="134" class="swatch-hex">#5F574F</text>
+<text x="579" y="148" class="swatch-name">Warm Gray</text>
+<text x="579" y="162" class="swatch-usage">Pixel outline alternative</text>
+<rect x="672" y="120" width="60" height="60" fill="#94B0C2" stroke="#333" stroke-width="1"/>
+<text x="737" y="134" class="swatch-hex">#94B0C2</text>
+<text x="737" y="148" class="swatch-name">Cool Gray</text>
+<text x="737" y="162" class="swatch-usage">Tła UI, neutral elements</text>
+<rect x="830" y="120" width="60" height="60" fill="#FFF1E8" stroke="#333" stroke-width="1"/>
+<text x="895" y="134" class="swatch-hex">#FFF1E8</text>
+<text x="895" y="148" class="swatch-name">Cream White</text>
+<text x="895" y="162" class="swatch-usage">Highlight, jasne tła</text>
+<text x="40" y="235" class="group-title">Browns / Earthy</text>
+<rect x="40" y="250" width="60" height="60" fill="#3E2C29" stroke="#333" stroke-width="1"/>
+<text x="105" y="264" class="swatch-hex">#3E2C29</text>
+<text x="105" y="278" class="swatch-name">Deep Brown</text>
+<text x="105" y="292" class="swatch-usage">Drewno cienie</text>
+<rect x="198" y="250" width="60" height="60" fill="#7E4427" stroke="#333" stroke-width="1"/>
+<text x="263" y="264" class="swatch-hex">#7E4427</text>
+<text x="263" y="278" class="swatch-name">Wood Brown</text>
+<text x="263" y="292" class="swatch-usage">Drewno mid</text>
+<rect x="356" y="250" width="60" height="60" fill="#C18556" stroke="#333" stroke-width="1"/>
+<text x="421" y="264" class="swatch-hex">#C18556</text>
+<text x="421" y="278" class="swatch-name">Tan</text>
+<text x="421" y="292" class="swatch-usage">Drewno highlights, paczki</text>
+<rect x="514" y="250" width="60" height="60" fill="#E8C580" stroke="#333" stroke-width="1"/>
+<text x="579" y="264" class="swatch-hex">#E8C580</text>
+<text x="579" y="278" class="swatch-name">Sand</text>
+<text x="579" y="292" class="swatch-usage">Highlight drewna, cardboard</text>
+<text x="40" y="365" class="group-title">Reds / Pinks</text>
+<rect x="40" y="380" width="60" height="60" fill="#7A1E29" stroke="#333" stroke-width="1"/>
+<text x="105" y="394" class="swatch-hex">#7A1E29</text>
+<text x="105" y="408" class="swatch-name">Dark Red</text>
+<text x="105" y="422" class="swatch-usage">Cienie czerwonego, sklepy …</text>
+<rect x="198" y="380" width="60" height="60" fill="#D8334A" stroke="#333" stroke-width="1"/>
+<text x="263" y="394" class="swatch-hex">#D8334A</text>
+<text x="263" y="408" class="swatch-name">Brand Red</text>
+<text x="263" y="422" class="swatch-usage">Fashion accent, sale tags</text>
+<rect x="356" y="380" width="60" height="60" fill="#FF7A8A" stroke="#333" stroke-width="1"/>
+<text x="421" y="394" class="swatch-hex">#FF7A8A</text>
+<text x="421" y="408" class="swatch-name">Coral Pink</text>
+<text x="421" y="422" class="swatch-usage">Highlight, beauty shop</text>
+<text x="40" y="495" class="group-title">Oranges / Yellows</text>
+<rect x="40" y="510" width="60" height="60" fill="#A8530F" stroke="#333" stroke-width="1"/>
+<text x="105" y="524" class="swatch-hex">#A8530F</text>
+<text x="105" y="538" class="swatch-name">Burnt Orange</text>
+<text x="105" y="552" class="swatch-usage">Cienie pomarańczy, food sh…</text>
+<rect x="198" y="510" width="60" height="60" fill="#E89B3F" stroke="#333" stroke-width="1"/>
+<text x="263" y="524" class="swatch-hex">#E89B3F</text>
+<text x="263" y="538" class="swatch-name">Tangerine</text>
+<text x="263" y="552" class="swatch-usage">Food shop primary</text>
+<rect x="356" y="510" width="60" height="60" fill="#FFCB45" stroke="#333" stroke-width="1"/>
+<text x="421" y="524" class="swatch-hex">#FFCB45</text>
+<text x="421" y="538" class="swatch-name">Gold Yellow</text>
+<text x="421" y="552" class="swatch-usage">Coins, money particles</text>
+<rect x="514" y="510" width="60" height="60" fill="#FFE872" stroke="#333" stroke-width="1"/>
+<text x="579" y="524" class="swatch-hex">#FFE872</text>
+<text x="579" y="538" class="swatch-name">Pale Yellow</text>
+<text x="579" y="552" class="swatch-usage">Highlight gold, sparks</text>
+<text x="40" y="625" class="group-title">Greens</text>
+<rect x="40" y="640" width="60" height="60" fill="#1E5A3A" stroke="#333" stroke-width="1"/>
+<text x="105" y="654" class="swatch-hex">#1E5A3A</text>
+<text x="105" y="668" class="swatch-name">Forest Green</text>
+<text x="105" y="682" class="swatch-usage">Trawa cień, plants</text>
+<rect x="198" y="640" width="60" height="60" fill="#3CA858" stroke="#333" stroke-width="1"/>
+<text x="263" y="654" class="swatch-hex">#3CA858</text>
+<text x="263" y="668" class="swatch-name">Bright Green</text>
+<text x="263" y="682" class="swatch-usage">Trawa, sports shop</text>
+<rect x="356" y="640" width="60" height="60" fill="#8FE38A" stroke="#333" stroke-width="1"/>
+<text x="421" y="654" class="swatch-hex">#8FE38A</text>
+<text x="421" y="668" class="swatch-name">Mint Green</text>
+<text x="421" y="682" class="swatch-usage">Highlight zielonego, money…</text>
+<text x="40" y="755" class="group-title">Blues</text>
+<rect x="40" y="770" width="60" height="60" fill="#1A4A8C" stroke="#333" stroke-width="1"/>
+<text x="105" y="784" class="swatch-hex">#1A4A8C</text>
+<text x="105" y="798" class="swatch-name">Deep Blue</text>
+<text x="105" y="812" class="swatch-usage">Cienie nieba, tech shadow</text>
+<rect x="198" y="770" width="60" height="60" fill="#2E7BD1" stroke="#333" stroke-width="1"/>
+<text x="263" y="784" class="swatch-hex">#2E7BD1</text>
+<text x="263" y="798" class="swatch-name">Sky Blue</text>
+<text x="263" y="812" class="swatch-usage">Tech shop primary</text>
+<rect x="356" y="770" width="60" height="60" fill="#6FC3E0" stroke="#333" stroke-width="1"/>
+<text x="421" y="784" class="swatch-hex">#6FC3E0</text>
+<text x="421" y="798" class="swatch-name">Light Blue</text>
+<text x="421" y="812" class="swatch-usage">Highlight, glass, water</text>
+<text x="40" y="885" class="group-title">Purples</text>
+<rect x="40" y="900" width="60" height="60" fill="#4A1B5C" stroke="#333" stroke-width="1"/>
+<text x="105" y="914" class="swatch-hex">#4A1B5C</text>
+<text x="105" y="928" class="swatch-name">Royal Purple</text>
+<text x="105" y="942" class="swatch-usage">Cienie luxury, beauty deep</text>
+<rect x="198" y="900" width="60" height="60" fill="#8E3FB0" stroke="#333" stroke-width="1"/>
+<text x="263" y="914" class="swatch-hex">#8E3FB0</text>
+<text x="263" y="928" class="swatch-name">Magenta</text>
+<text x="263" y="942" class="swatch-usage">Beauty primary, viral effect</text>
+<rect x="356" y="900" width="60" height="60" fill="#D387D9" stroke="#333" stroke-width="1"/>
+<text x="421" y="914" class="swatch-hex">#D387D9</text>
+<text x="421" y="928" class="swatch-name">Lavender</text>
+<text x="421" y="942" class="swatch-usage">Highlight beauty</text>
+<text x="40" y="1015" class="group-title">Special</text>
+<rect x="40" y="1030" width="60" height="60" fill="#FF004D" stroke="#333" stroke-width="1"/>
+<text x="105" y="1044" class="swatch-hex">#FF004D</text>
+<text x="105" y="1058" class="swatch-name">Hot Pink</text>
+<text x="105" y="1072" class="swatch-usage">VIRAL accent, alerts</text>
+<rect x="198" y="1030" width="60" height="60" fill="#00E0F0" stroke="#333" stroke-width="1"/>
+<text x="263" y="1044" class="swatch-hex">#00E0F0</text>
+<text x="263" y="1058" class="swatch-name">Cyan</text>
+<text x="263" y="1072" class="swatch-usage">Tech accent, automation glow</text>
+<rect x="356" y="1030" width="60" height="60" fill="#FFB000" stroke="#333" stroke-width="1"/>
+<text x="421" y="1044" class="swatch-hex">#FFB000</text>
+<text x="421" y="1058" class="swatch-name">Amber</text>
+<text x="421" y="1072" class="swatch-usage">Toys shop, achievements</text>
+<rect x="514" y="1030" width="60" height="60" fill="#5BC15B" stroke="#333" stroke-width="1"/>
+<text x="579" y="1044" class="swatch-hex">#5BC15B</text>
+<text x="579" y="1058" class="swatch-name">Cash Green</text>
+<text x="579" y="1072" class="swatch-usage">$$$ amounts, profit indica…</text>
+<text x="40" y="1140" class="subtitle">Total: 32 colors. ZAWSZE używaj kolorów z tej palety. ŻADNYCH pośrednich tonów.</text>
+</svg>

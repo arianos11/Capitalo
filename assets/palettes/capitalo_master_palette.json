@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "name": "Capitalo Master Palette",
+  "total_colors": 30,
+  "groups": {
+    "Neutrals": [
+      {
+        "hex": "#0F0F1B",
+        "name": "Deep Black",
+        "usage": "Outline kontur, cienie głębokie"
+      },
+      {
+        "hex": "#1D2B53",
+        "name": "Dark Navy",
+        "usage": "Cienie tła, midnight"
+      },
+      {
+        "hex": "#3F3F74",
+        "name": "Slate Purple",
+        "usage": "Cienie postaci, midtones"
+      },
+      {
+        "hex": "#5F574F",
+        "name": "Warm Gray",
+        "usage": "Pixel outline alternative"
+      },
+      {
+        "hex": "#94B0C2",
+        "name": "Cool Gray",
+        "usage": "Tła UI, neutral elements"
+      },
+      {
+        "hex": "#FFF1E8",
+        "name": "Cream White",
+        "usage": "Highlight, jasne tła"
+      }
+    ],
+    "Browns_Earthy": [
+      {
+        "hex": "#3E2C29",
+        "name": "Deep Brown",
+        "usage": "Drewno cienie"
+      },
+      {
+        "hex": "#7E4427",
+        "name": "Wood Brown",
+        "usage": "Drewno mid"
+      },
+      {
+        "hex": "#C18556",
+        "name": "Tan",
+        "usage": "Drewno highlights, paczki"
+      },
+      {
+        "hex": "#E8C580",
+        "name": "Sand",
+        "usage": "Highlight drewna, cardboard"
+      }
+    ],
+    "Reds_Pinks": [
+      {
+        "hex": "#7A1E29",
+        "name": "Dark Red",
+        "usage": "Cienie czerwonego, sklepy fashion shadow"
+      },
+      {
+        "hex": "#D8334A",
+        "name": "Brand Red",
+        "usage": "Fashion accent, sale tags"
+      },
+      {
+        "hex": "#FF7A8A",
+        "name": "Coral Pink",
+        "usage": "Highlight, beauty shop"
+      }
+    ],
+    "Oranges_Yellows": [
+      {
+        "hex": "#A8530F",
+        "name": "Burnt Orange",
+        "usage": "Cienie pomarańczy, food shadow"
+      },
+      {
+        "hex": "#E89B3F",
+        "name": "Tangerine",
+        "usage": "Food shop primary"
+      },
+      {
+        "hex": "#FFCB45",
+        "name": "Gold Yellow",
+        "usage": "Coins, money particles"
+      },
+      {
+        "hex": "#FFE872",
+        "name": "Pale Yellow",
+        "usage": "Highlight gold, sparks"
+      }
+    ],
+    "Greens": [
+      {
+        "hex": "#1E5A3A",
+        "name": "Forest Green",
+        "usage": "Trawa cień, plants"
+      },
+      {
+        "hex": "#3CA858",
+        "name": "Bright Green",
+        "usage": "Trawa, sports shop"
+      },
+      {
+        "hex": "#8FE38A",
+        "name": "Mint Green",
+        "usage": "Highlight zielonego, money positive"
+      }
+    ],
+    "Blues": [
+      {
+        "hex": "#1A4A8C",
+        "name": "Deep Blue",
+        "usage": "Cienie nieba, tech shadow"
+      },
+      {
+        "hex": "#2E7BD1",
+        "name": "Sky Blue",
+        "usage": "Tech shop primary"
+      },
+      {
+        "hex": "#6FC3E0",
+        "name": "Light Blue",
+        "usage": "Highlight, glass, water"
+      }
+    ],
+    "Purples": [
+      {
+        "hex": "#4A1B5C",
+        "name": "Royal Purple",
+        "usage": "Cienie luxury, beauty deep"
+      },
+      {
+        "hex": "#8E3FB0",
+        "name": "Magenta",
+        "usage": "Beauty primary, viral effect"
+      },
+      {
+        "hex": "#D387D9",
+        "name": "Lavender",
+        "usage": "Highlight beauty"
+      }
+    ],
+    "Special": [
+      {
+        "hex": "#FF004D",
+        "name": "Hot Pink",
+        "usage": "VIRAL accent, alerts"
+      },
+      {
+        "hex": "#00E0F0",
+        "name": "Cyan",
+        "usage": "Tech accent, automation glow"
+      },
+      {
+        "hex": "#FFB000",
+        "name": "Amber",
+        "usage": "Toys shop, achievements"
+      },
+      {
+        "hex": "#5BC15B",
+        "name": "Cash Green",
+        "usage": "$$$ amounts, profit indicators"
+      }
+    ]
+  },
+  "flat_hex_list": [
+    "#0F0F1B",
+    "#1D2B53",
+    "#3F3F74",
+    "#5F574F",
+    "#94B0C2",
+    "#FFF1E8",
+    "#3E2C29",
+    "#7E4427",
+    "#C18556",
+    "#E8C580",
+    "#7A1E29",
+    "#D8334A",
+    "#FF7A8A",
+    "#A8530F",
+    "#E89B3F",
+    "#FFCB45",
+    "#FFE872",
+    "#1E5A3A",
+    "#3CA858",
+    "#8FE38A",
+    "#1A4A8C",
+    "#2E7BD1",
+    "#6FC3E0",
+    "#4A1B5C",
+    "#8E3FB0",
+    "#D387D9",
+    "#FF004D",
+    "#00E0F0",
+    "#FFB000",
+    "#5BC15B"
+  ]
+}

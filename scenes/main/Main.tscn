@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://capitalo_main_scene"]
+
+[ext_resource type="Script" path="res://scenes/main/Main.gd" id="1_main"]
+
+[sub_resource type="Theme" id="Theme_default"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 1080.0
+offset_bottom = 1920.0
+color = Color(0.117647, 0.168627, 0.32549, 1)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="VBoxContainer" parent="UI"]
+offset_left = 40.0
+offset_top = 80.0
+offset_right = 1040.0
+offset_bottom = 280.0
+
+[node name="GameTitle" type="Label" parent="UI/HUD"]
+layout_mode = 2
+text = "CAPITALO"
+horizontal_alignment = 1
+
+[node name="CashLabel" type="Label" parent="UI/HUD"]
+layout_mode = 2
+text = "$0"
+horizontal_alignment = 1
+
+[node name="IPSLabel" type="Label" parent="UI/HUD"]
+layout_mode = 2
+text = "$0/sec"
+horizontal_alignment = 1
+
+[node name="Debug" type="VBoxContainer" parent="UI"]
+offset_left = 40.0
+offset_top = 1600.0
+offset_right = 1040.0
+offset_bottom = 1880.0
+
+[node name="DebugLabel" type="Label" parent="UI/Debug"]
+layout_mode = 2
+text = "DEBUG PANEL (Phase 1)"
+horizontal_alignment = 1
+
+[node name="AddMoneyButton" type="Button" parent="UI/Debug"]
+layout_mode = 2
+text = "+$1,000 (debug)"
+
+[node name="StatusLabel" type="Label" parent="UI/Debug"]
+layout_mode = 2
+text = "Ready."
+horizontal_alignment = 1
+autowrap_mode = 3

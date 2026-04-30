@@ -1,0 +1,474 @@
+{
+  "schema_version": 1,
+  "description": "Capitalo shop categories. Each shop is a category that player can build instances of. Income scales exponentially with level. base_income values are in $/sec for level 0 reference.",
+  "global_constants": {
+    "level_cost_growth": 1.15,
+    "income_growth_per_level": 1.07,
+    "base_level_cost": 10,
+    "max_level": 999
+  },
+  "shops": [
+    {
+      "id": "fashion",
+      "order": 1,
+      "name": "Fashion Boutique",
+      "name_localized_key": "shop.fashion.name",
+      "description": "Trendy clothes and accessories. Where style meets profit.",
+      "description_localized_key": "shop.fashion.desc",
+      "base_income": 1.0,
+      "unlock_cost": 0,
+      "unlock_phase": "phase_1",
+      "color_primary": "#E91E63",
+      "color_secondary": "#FCE4EC",
+      "icon_sprite": "shop_fashion_icon",
+      "building_sprite_levels": ["fashion_lvl1", "fashion_lvl2", "fashion_lvl3"],
+      "building_level_thresholds": [1, 25, 75],
+      "specializations": [
+        {
+          "id": "fashion_streetwear",
+          "name": "Streetwear",
+          "income_multiplier": 1.5,
+          "reputation_multiplier": 0.8,
+          "unlock_cost": 5000
+        },
+        {
+          "id": "fashion_haute_couture",
+          "name": "Haute Couture",
+          "income_multiplier": 0.7,
+          "reputation_multiplier": 2.0,
+          "unlock_cost": 50000
+        },
+        {
+          "id": "fashion_vintage",
+          "name": "Vintage",
+          "income_multiplier": 1.2,
+          "reputation_multiplier": 1.3,
+          "unlock_cost": 25000
+        }
+      ],
+      "event_boosts": {
+        "black_friday": 3.0,
+        "christmas": 2.0,
+        "valentines_day": 1.5,
+        "summer_sale": 2.0,
+        "back_to_school": 1.3
+      },
+      "synergy_tags": ["lifestyle", "consumer"]
+    },
+    {
+      "id": "tech",
+      "order": 2,
+      "name": "Tech Store",
+      "name_localized_key": "shop.tech.name",
+      "description": "Electronics, gadgets, and gaming gear. Gen Z's playground.",
+      "description_localized_key": "shop.tech.desc",
+      "base_income": 5.6,
+      "unlock_cost": 1000,
+      "unlock_phase": "phase_1",
+      "color_primary": "#2196F3",
+      "color_secondary": "#E3F2FD",
+      "icon_sprite": "shop_tech_icon",
+      "building_sprite_levels": ["tech_lvl1", "tech_lvl2", "tech_lvl3"],
+      "building_level_thresholds": [1, 25, 75],
+      "specializations": [
+        {
+          "id": "tech_gaming",
+          "name": "Gaming Hub",
+          "income_multiplier": 1.6,
+          "reputation_multiplier": 1.2,
+          "unlock_cost": 50000
+        },
+        {
+          "id": "tech_smart_home",
+          "name": "Smart Home",
+          "income_multiplier": 1.3,
+          "reputation_multiplier": 1.0,
+          "unlock_cost": 100000
+        },
+        {
+          "id": "tech_premium",
+          "name": "Premium Apple-style",
+          "income_multiplier": 0.9,
+          "reputation_multiplier": 1.8,
+          "unlock_cost": 500000
+        }
+      ],
+      "event_boosts": {
+        "black_friday": 4.0,
+        "christmas": 2.5,
+        "back_to_school": 2.5,
+        "cyber_monday": 4.0
+      },
+      "synergy_tags": ["tech", "consumer"]
+    },
+    {
+      "id": "food",
+      "order": 3,
+      "name": "Food Court",
+      "name_localized_key": "shop.food.name",
+      "description": "From burgers to bistros. Everyone has to eat.",
+      "description_localized_key": "shop.food.desc",
+      "base_income": 31.36,
+      "unlock_cost": 50000,
+      "unlock_phase": "phase_1",
+      "color_primary": "#FF9800",
+      "color_secondary": "#FFF3E0",
+      "icon_sprite": "shop_food_icon",
+      "building_sprite_levels": ["food_lvl1", "food_lvl2", "food_lvl3"],
+      "building_level_thresholds": [1, 25, 75],
+      "specializations": [
+        {
+          "id": "food_fastfood",
+          "name": "Fast Food Chain",
+          "income_multiplier": 1.7,
+          "reputation_multiplier": 0.7,
+          "unlock_cost": 250000
+        },
+        {
+          "id": "food_restaurant",
+          "name": "Fine Dining",
+          "income_multiplier": 1.0,
+          "reputation_multiplier": 2.0,
+          "unlock_cost": 500000
+        },
+        {
+          "id": "food_organic",
+          "name": "Organic & Healthy",
+          "income_multiplier": 1.2,
+          "reputation_multiplier": 1.5,
+          "unlock_cost": 750000
+        }
+      ],
+      "event_boosts": {
+        "valentines_day": 2.5,
+        "christmas": 2.0,
+        "easter": 1.5,
+        "summer_sale": 1.3
+      },
+      "synergy_tags": ["lifestyle", "essential"]
+    },
+    {
+      "id": "home",
+      "order": 4,
+      "name": "Home & Living",
+      "name_localized_key": "shop.home.name",
+      "description": "Furniture, decor, and IKEA-killer bargains.",
+      "description_localized_key": "shop.home.desc",
+      "base_income": 175.62,
+      "unlock_cost": 1000000,
+      "unlock_phase": "phase_2",
+      "color_primary": "#795548",
+      "color_secondary": "#EFEBE9",
+      "icon_sprite": "shop_home_icon",
+      "building_sprite_levels": ["home_lvl1", "home_lvl2", "home_lvl3"],
+      "building_level_thresholds": [1, 25, 75],
+      "specializations": [
+        {
+          "id": "home_minimalist",
+          "name": "Scandi Minimalist",
+          "income_multiplier": 1.3,
+          "reputation_multiplier": 1.4,
+          "unlock_cost": 5000000
+        },
+        {
+          "id": "home_luxury",
+          "name": "Luxury Interiors",
+          "income_multiplier": 0.8,
+          "reputation_multiplier": 2.2,
+          "unlock_cost": 25000000
+        },
+        {
+          "id": "home_diy",
+          "name": "DIY & Tools",
+          "income_multiplier": 1.5,
+          "reputation_multiplier": 0.9,
+          "unlock_cost": 10000000
+        }
+      ],
+      "event_boosts": {
+        "black_friday": 3.5,
+        "christmas": 2.5,
+        "spring_clean": 2.0
+      },
+      "synergy_tags": ["lifestyle", "essential"]
+    },
+    {
+      "id": "beauty",
+      "order": 5,
+      "name": "Beauty Salon",
+      "name_localized_key": "shop.beauty.name",
+      "description": "Cosmetics, perfumes, and self-care empire.",
+      "description_localized_key": "shop.beauty.desc",
+      "base_income": 983.45,
+      "unlock_cost": 50000000,
+      "unlock_phase": "phase_2",
+      "color_primary": "#9C27B0",
+      "color_secondary": "#F3E5F5",
+      "icon_sprite": "shop_beauty_icon",
+      "building_sprite_levels": ["beauty_lvl1", "beauty_lvl2", "beauty_lvl3"],
+      "building_level_thresholds": [1, 25, 75],
+      "specializations": [
+        {
+          "id": "beauty_makeup",
+          "name": "Makeup Studio",
+          "income_multiplier": 1.4,
+          "reputation_multiplier": 1.2,
+          "unlock_cost": 100000000
+        },
+        {
+          "id": "beauty_skincare",
+          "name": "Skincare Lab",
+          "income_multiplier": 1.2,
+          "reputation_multiplier": 1.6,
+          "unlock_cost": 250000000
+        },
+        {
+          "id": "beauty_perfume",
+          "name": "Luxury Perfume",
+          "income_multiplier": 0.9,
+          "reputation_multiplier": 2.5,
+          "unlock_cost": 500000000
+        }
+      ],
+      "event_boosts": {
+        "valentines_day": 4.0,
+        "christmas": 2.5,
+        "mothers_day": 3.5,
+        "summer_sale": 2.0
+      },
+      "synergy_tags": ["lifestyle", "luxury"]
+    },
+    {
+      "id": "books",
+      "order": 6,
+      "name": "Books & Media",
+      "name_localized_key": "shop.books.name",
+      "description": "Books, vinyl, and indie merch for the cultured crowd.",
+      "description_localized_key": "shop.books.desc",
+      "base_income": 5507.32,
+      "unlock_cost": 1000000000,
+      "unlock_phase": "phase_2",
+      "color_primary": "#3F51B5",
+      "color_secondary": "#E8EAF6",
+      "icon_sprite": "shop_books_icon",
+      "building_sprite_levels": ["books_lvl1", "books_lvl2", "books_lvl3"],
+      "building_level_thresholds": [1, 25, 75],
+      "specializations": [
+        {
+          "id": "books_bookstore",
+          "name": "Indie Bookstore",
+          "income_multiplier": 1.0,
+          "reputation_multiplier": 1.8,
+          "unlock_cost": 2000000000
+        },
+        {
+          "id": "books_vinyl",
+          "name": "Vinyl & Music",
+          "income_multiplier": 1.3,
+          "reputation_multiplier": 1.5,
+          "unlock_cost": 5000000000
+        },
+        {
+          "id": "books_streaming",
+          "name": "Digital Media",
+          "income_multiplier": 1.8,
+          "reputation_multiplier": 0.9,
+          "unlock_cost": 10000000000
+        }
+      ],
+      "event_boosts": {
+        "back_to_school": 3.0,
+        "christmas": 2.0,
+        "black_friday": 2.0
+      },
+      "synergy_tags": ["culture", "niche"]
+    },
+    {
+      "id": "toys",
+      "order": 7,
+      "name": "Toys & Games",
+      "name_localized_key": "shop.toys.name",
+      "description": "Toys, board games, and Pokemon cards. Kids and adult-kids welcome.",
+      "description_localized_key": "shop.toys.desc",
+      "base_income": 30840.98,
+      "unlock_cost": 100000000000,
+      "unlock_phase": "phase_2",
+      "color_primary": "#F44336",
+      "color_secondary": "#FFEBEE",
+      "icon_sprite": "shop_toys_icon",
+      "building_sprite_levels": ["toys_lvl1", "toys_lvl2", "toys_lvl3"],
+      "building_level_thresholds": [1, 25, 75],
+      "specializations": [
+        {
+          "id": "toys_kids",
+          "name": "Kids Paradise",
+          "income_multiplier": 1.5,
+          "reputation_multiplier": 1.0,
+          "unlock_cost": 200000000000
+        },
+        {
+          "id": "toys_collectibles",
+          "name": "Collectibles & TCG",
+          "income_multiplier": 1.2,
+          "reputation_multiplier": 1.7,
+          "unlock_cost": 500000000000
+        },
+        {
+          "id": "toys_boardgames",
+          "name": "Board Games Cafe",
+          "income_multiplier": 1.0,
+          "reputation_multiplier": 1.6,
+          "unlock_cost": 300000000000
+        }
+      ],
+      "event_boosts": {
+        "christmas": 5.0,
+        "easter": 2.5,
+        "halloween": 2.5,
+        "valentines_day": 1.3,
+        "summer_sale": 1.5
+      },
+      "synergy_tags": ["entertainment", "consumer"]
+    },
+    {
+      "id": "sports",
+      "order": 8,
+      "name": "Sports Empire",
+      "name_localized_key": "shop.sports.name",
+      "description": "Sportswear, equipment, and fitness gear.",
+      "description_localized_key": "shop.sports.desc",
+      "base_income": 172709.48,
+      "unlock_cost": 10000000000000,
+      "unlock_phase": "phase_2",
+      "color_primary": "#4CAF50",
+      "color_secondary": "#E8F5E9",
+      "icon_sprite": "shop_sports_icon",
+      "building_sprite_levels": ["sports_lvl1", "sports_lvl2", "sports_lvl3"],
+      "building_level_thresholds": [1, 25, 75],
+      "specializations": [
+        {
+          "id": "sports_outdoor",
+          "name": "Outdoor & Adventure",
+          "income_multiplier": 1.2,
+          "reputation_multiplier": 1.4,
+          "unlock_cost": 20000000000000
+        },
+        {
+          "id": "sports_athletics",
+          "name": "Athletics & Running",
+          "income_multiplier": 1.4,
+          "reputation_multiplier": 1.2,
+          "unlock_cost": 50000000000000
+        },
+        {
+          "id": "sports_premium",
+          "name": "Premium Activewear",
+          "income_multiplier": 1.0,
+          "reputation_multiplier": 2.0,
+          "unlock_cost": 100000000000000
+        }
+      ],
+      "event_boosts": {
+        "summer_sale": 3.0,
+        "back_to_school": 1.8,
+        "olympic_games": 5.0
+      },
+      "synergy_tags": ["lifestyle", "consumer"]
+    },
+    {
+      "id": "luxury",
+      "order": 9,
+      "name": "Luxury Boutique",
+      "name_localized_key": "shop.luxury.name",
+      "description": "Jewelry, watches, designer goods. The 1% shop here.",
+      "description_localized_key": "shop.luxury.desc",
+      "base_income": 967173.12,
+      "unlock_cost": 1000000000000000,
+      "unlock_phase": "phase_3",
+      "color_primary": "#FFC107",
+      "color_secondary": "#FFF8E1",
+      "icon_sprite": "shop_luxury_icon",
+      "building_sprite_levels": ["luxury_lvl1", "luxury_lvl2", "luxury_lvl3"],
+      "building_level_thresholds": [1, 25, 75],
+      "specializations": [
+        {
+          "id": "luxury_jewelry",
+          "name": "Fine Jewelry",
+          "income_multiplier": 1.1,
+          "reputation_multiplier": 2.5,
+          "unlock_cost": 2000000000000000
+        },
+        {
+          "id": "luxury_watches",
+          "name": "Swiss Watches",
+          "income_multiplier": 0.9,
+          "reputation_multiplier": 3.0,
+          "unlock_cost": 5000000000000000
+        },
+        {
+          "id": "luxury_designer",
+          "name": "Designer Bags & Couture",
+          "income_multiplier": 1.3,
+          "reputation_multiplier": 2.2,
+          "unlock_cost": 10000000000000000
+        }
+      ],
+      "event_boosts": {
+        "valentines_day": 5.0,
+        "christmas": 4.0,
+        "black_friday": 2.0,
+        "anniversary_event": 6.0
+      },
+      "synergy_tags": ["luxury", "premium"]
+    },
+    {
+      "id": "marketplace",
+      "order": 10,
+      "name": "Global Marketplace",
+      "name_localized_key": "shop.marketplace.name",
+      "description": "Endgame: your own Amazon. All shops feed it. The empire's crown.",
+      "description_localized_key": "shop.marketplace.desc",
+      "base_income": 5416169.45,
+      "unlock_cost": 100000000000000000,
+      "unlock_phase": "phase_3",
+      "color_primary": "#000000",
+      "color_secondary": "#FAFAFA",
+      "icon_sprite": "shop_marketplace_icon",
+      "building_sprite_levels": ["marketplace_lvl1", "marketplace_lvl2", "marketplace_lvl3"],
+      "building_level_thresholds": [1, 25, 75],
+      "specializations": [
+        {
+          "id": "marketplace_b2c",
+          "name": "B2C Platform",
+          "income_multiplier": 1.5,
+          "reputation_multiplier": 1.3,
+          "unlock_cost": 200000000000000000
+        },
+        {
+          "id": "marketplace_b2b",
+          "name": "B2B Wholesale",
+          "income_multiplier": 1.3,
+          "reputation_multiplier": 1.5,
+          "unlock_cost": 500000000000000000
+        },
+        {
+          "id": "marketplace_subscription",
+          "name": "Subscription Empire",
+          "income_multiplier": 2.0,
+          "reputation_multiplier": 1.0,
+          "unlock_cost": 1000000000000000000
+        }
+      ],
+      "event_boosts": {
+        "black_friday": 6.0,
+        "cyber_monday": 6.0,
+        "christmas": 3.0,
+        "anniversary_event": 4.0
+      },
+      "synergy_tags": ["meta", "endgame"],
+      "special_mechanics": {
+        "synergy_bonus": "Receives +5% income for each unique shop category owned at level 50+"
+      }
+    }
+  ]
+}

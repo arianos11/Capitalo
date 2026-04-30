@@ -1,0 +1,19 @@
+{
+  "mcpServers": {
+    "github": {
+      "type": "http",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "description": "GitHub repo / issues / PRs (requires GH token in env)"
+    },
+    "context7": {
+      "command": "npx",
+      "args": ["-y", "@upstash/context7-mcp@latest"],
+      "description": "Live docs lookup — Godot, GDScript, mobile build tooling"
+    }
+  },
+  "_notes": {
+    "godot-mcp": "Optional. Community server: https://github.com/Coding-Solo/godot-mcp — install per their README if you want Claude to drive Godot editor.",
+    "playwright": "NOT included — Capitalo is mobile-only, no web export.",
+    "ios-simulator-mcp": "Optional once iOS export ready: claude mcp add ios-simulator -- npx -y @joshuayoes/ios-simulator-mcp"
+  }
+}

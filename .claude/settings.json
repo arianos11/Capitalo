@@ -1,0 +1,86 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git diff:*)",
+      "Bash(git status:*)",
+      "Bash(git log:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git restore:*)",
+      "Bash(git stash:*)",
+      "Bash(godot --headless:*)",
+      "Bash(godot --check-only:*)",
+      "Bash(gdformat:*)",
+      "Bash(gdlint:*)",
+      "Bash(gdparse:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)",
+      "Bash(find:*)",
+      "Bash(rg:*)",
+      "Bash(jq:*)",
+      "Bash(python3:*)",
+      "Edit",
+      "Read",
+      "Write"
+    ],
+    "deny": [
+      "Bash(rm -rf:*)",
+      "Bash(git push --force:*)",
+      "Bash(git push -f:*)",
+      "Bash(git reset --hard:*)",
+      "Bash(git clean -fd:*)",
+      "Read(./.env*)",
+      "Read(./secrets/*)",
+      "Read(./**/keystore*)",
+      "Read(./**/*.keystore)",
+      "Read(./**/*.p12)",
+      "Read(./**/*.mobileprovision)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(git merge:*)",
+      "Bash(git rebase:*)",
+      "Bash(godot --export:*)",
+      "Bash(godot --export-release:*)",
+      "Bash(godot --export-debug:*)"
+    ],
+    "defaultMode": "default"
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "case \"$CLAUDE_TOOL_INPUT_FILE_PATH\" in *.gd) gdformat \"$CLAUDE_TOOL_INPUT_FILE_PATH\" 2>/dev/null || true ;; *.json) python3 -m json.tool \"$CLAUDE_TOOL_INPUT_FILE_PATH\" >/dev/null 2>&1 || echo \"⚠️  invalid JSON: $CLAUDE_TOOL_INPUT_FILE_PATH\" ;; esac"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "gdlint scripts/ 2>/dev/null | tail -20 || true"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "osascript -e 'display notification \"Claude needs you\" with title \"Capitalo / CC\"' 2>/dev/null || true"
+          }
+        ]
+      }
+    ]
+  }
+}

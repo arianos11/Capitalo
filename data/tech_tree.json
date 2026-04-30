@@ -1,0 +1,1215 @@
+{
+  "schema_version": 1,
+  "description": "Tech tree - main meta-progression system. Players spend Innovation Points (IP) earned from prestige to unlock permanent upgrades. 4 branches: Marketing (clicking), Operations (shops), HR/Automation (managers), Innovation (endgame). Total ~50 nodes.",
+  "global_constants": {
+    "total_nodes": 48,
+    "ip_required_to_complete_all": 923,
+    "phase_1_branch": "marketing",
+    "phase_2_branches": [
+      "operations",
+      "hr_automation"
+    ],
+    "phase_3_branches": [
+      "innovation"
+    ]
+  },
+  "branches": [
+    {
+      "id": "marketing",
+      "name": "Marketing",
+      "description": "Improves clicking mechanics, campaign success rates, and viral chances.",
+      "color_primary": "#E91E63",
+      "icon": "tech_branch_marketing_icon",
+      "phase": "phase_1",
+      "ui_position": "left"
+    },
+    {
+      "id": "operations",
+      "name": "Operations",
+      "description": "Improves shop performance, logistics, and capacity.",
+      "color_primary": "#2196F3",
+      "icon": "tech_branch_operations_icon",
+      "phase": "phase_2",
+      "ui_position": "center_left"
+    },
+    {
+      "id": "hr_automation",
+      "name": "HR & Automation",
+      "description": "Improves managers, hiring, and automation.",
+      "color_primary": "#FF9800",
+      "icon": "tech_branch_hr_icon",
+      "phase": "phase_2",
+      "ui_position": "center_right"
+    },
+    {
+      "id": "innovation",
+      "name": "Innovation",
+      "description": "Endgame: drones, AI, quantum sales, time compression.",
+      "color_primary": "#9C27B0",
+      "icon": "tech_branch_innovation_icon",
+      "phase": "phase_3",
+      "ui_position": "right"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "marketing_copywriting_1",
+      "branch": "marketing",
+      "name": "Copywriting Basics",
+      "description": "+10% success rate on Flyers and Facebook Ads.",
+      "ip_cost": 1,
+      "prerequisites": [],
+      "tier": 1,
+      "ui_position": {
+        "x": 0,
+        "y": 0
+      },
+      "effects": [
+        {
+          "type": "campaign_success_chance_bonus",
+          "target_campaigns": [
+            "flyers",
+            "facebook_ads"
+          ],
+          "value": 0.1
+        }
+      ],
+      "icon": "tech_marketing_copy1_icon"
+    },
+    {
+      "id": "marketing_copywriting_2",
+      "branch": "marketing",
+      "name": "Copywriting Mastery",
+      "description": "+15% success rate on ALL campaigns.",
+      "ip_cost": 3,
+      "prerequisites": [
+        "marketing_copywriting_1"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 0,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "campaign_success_chance_bonus",
+          "target_campaigns": "all",
+          "value": 0.15
+        }
+      ],
+      "icon": "tech_marketing_copy2_icon"
+    },
+    {
+      "id": "marketing_targeting_algorithm",
+      "branch": "marketing",
+      "name": "Targeting Algorithm",
+      "description": "Unlocks Google Ads campaign.",
+      "ip_cost": 2,
+      "prerequisites": [],
+      "tier": 1,
+      "ui_position": {
+        "x": 1,
+        "y": 0
+      },
+      "effects": [
+        {
+          "type": "unlock_campaign",
+          "target_campaigns": [
+            "google_ads"
+          ],
+          "value": 1
+        }
+      ],
+      "icon": "tech_marketing_targeting_icon"
+    },
+    {
+      "id": "marketing_viral_studio_1",
+      "branch": "marketing",
+      "name": "Viral Studio I",
+      "description": "+5% viral chance on all campaigns.",
+      "ip_cost": 5,
+      "prerequisites": [
+        "marketing_copywriting_1"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": -1,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "campaign_viral_chance_bonus",
+          "target_campaigns": "all",
+          "value": 0.05
+        }
+      ],
+      "icon": "tech_marketing_viral1_icon"
+    },
+    {
+      "id": "marketing_viral_studio_2",
+      "branch": "marketing",
+      "name": "Viral Studio II",
+      "description": "+10% viral chance, +50% viral multiplier. Unlocks TikTok Viral campaign.",
+      "ip_cost": 12,
+      "prerequisites": [
+        "marketing_viral_studio_1"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": -1,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "campaign_viral_chance_bonus",
+          "target_campaigns": "all",
+          "value": 0.1
+        },
+        {
+          "type": "viral_multiplier_bonus",
+          "value": 0.5
+        },
+        {
+          "type": "unlock_campaign",
+          "target_campaigns": [
+            "tiktok_viral"
+          ],
+          "value": 1
+        }
+      ],
+      "icon": "tech_marketing_viral2_icon"
+    },
+    {
+      "id": "marketing_automation",
+      "branch": "marketing",
+      "name": "Marketing Automation",
+      "description": "Auto-fire Flyers campaign every 5 seconds.",
+      "ip_cost": 8,
+      "prerequisites": [
+        "marketing_copywriting_2"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 0,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "auto_fire_campaign",
+          "target_campaigns": [
+            "flyers"
+          ],
+          "value": 5.0,
+          "value_unit": "seconds"
+        }
+      ],
+      "icon": "tech_marketing_automation_icon"
+    },
+    {
+      "id": "marketing_influencer_network",
+      "branch": "marketing",
+      "name": "Influencer Network",
+      "description": "Influencer campaigns now have 3 random influencers per launch (best result wins).",
+      "ip_cost": 10,
+      "prerequisites": [
+        "marketing_targeting_algorithm"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 1,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "campaign_special_mechanic",
+          "target_campaigns": [
+            "influencer"
+          ],
+          "value": "best_of_3_rolls"
+        }
+      ],
+      "icon": "tech_marketing_influencer_icon"
+    },
+    {
+      "id": "marketing_brand_building_1",
+      "branch": "marketing",
+      "name": "Brand Building I",
+      "description": "+20% baseline customer flow (passive customers walking in).",
+      "ip_cost": 6,
+      "prerequisites": [],
+      "tier": 1,
+      "ui_position": {
+        "x": 2,
+        "y": 0
+      },
+      "effects": [
+        {
+          "type": "baseline_customer_flow_bonus",
+          "value": 0.2
+        }
+      ],
+      "icon": "tech_marketing_brand1_icon"
+    },
+    {
+      "id": "marketing_brand_building_2",
+      "branch": "marketing",
+      "name": "Brand Building II",
+      "description": "+50% baseline customer flow + +25% reputation gain.",
+      "ip_cost": 15,
+      "prerequisites": [
+        "marketing_brand_building_1"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 2,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "baseline_customer_flow_bonus",
+          "value": 0.5
+        },
+        {
+          "type": "reputation_gain_bonus",
+          "value": 0.25
+        }
+      ],
+      "icon": "tech_marketing_brand2_icon"
+    },
+    {
+      "id": "marketing_pr_mastery",
+      "branch": "marketing",
+      "name": "PR Mastery",
+      "description": "Unlocks 'Spin into marketing' option in PR Crisis events.",
+      "ip_cost": 20,
+      "prerequisites": [
+        "marketing_brand_building_2",
+        "marketing_viral_studio_2"
+      ],
+      "tier": 4,
+      "ui_position": {
+        "x": 1,
+        "y": 3
+      },
+      "effects": [
+        {
+          "type": "unlock_pr_crisis_option",
+          "value": "spin_into_marketing"
+        }
+      ],
+      "icon": "tech_marketing_pr_icon"
+    },
+    {
+      "id": "operations_logistics_1",
+      "branch": "operations",
+      "name": "Logistics I",
+      "description": "+15% income on all shops (faster supply chains).",
+      "ip_cost": 3,
+      "prerequisites": [],
+      "tier": 1,
+      "ui_position": {
+        "x": 0,
+        "y": 0
+      },
+      "effects": [
+        {
+          "type": "global_income_multiplier",
+          "value": 0.15
+        }
+      ],
+      "icon": "tech_operations_logistics1_icon"
+    },
+    {
+      "id": "operations_logistics_2",
+      "branch": "operations",
+      "name": "Logistics II",
+      "description": "+30% income on all shops.",
+      "ip_cost": 8,
+      "prerequisites": [
+        "operations_logistics_1"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 0,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "global_income_multiplier",
+          "value": 0.3
+        }
+      ],
+      "icon": "tech_operations_logistics2_icon"
+    },
+    {
+      "id": "operations_logistics_3",
+      "branch": "operations",
+      "name": "Logistics III",
+      "description": "+60% income on all shops + 20% faster customer service.",
+      "ip_cost": 20,
+      "prerequisites": [
+        "operations_logistics_2"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 0,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "global_income_multiplier",
+          "value": 0.6
+        },
+        {
+          "type": "throughput_bonus",
+          "value": 0.2
+        }
+      ],
+      "icon": "tech_operations_logistics3_icon"
+    },
+    {
+      "id": "operations_inventory_1",
+      "branch": "operations",
+      "name": "Inventory Management I",
+      "description": "Shop capacity (max customers/sec) +25%.",
+      "ip_cost": 4,
+      "prerequisites": [],
+      "tier": 1,
+      "ui_position": {
+        "x": 1,
+        "y": 0
+      },
+      "effects": [
+        {
+          "type": "shop_capacity_bonus",
+          "value": 0.25
+        }
+      ],
+      "icon": "tech_operations_inventory1_icon"
+    },
+    {
+      "id": "operations_inventory_2",
+      "branch": "operations",
+      "name": "Inventory Management II",
+      "description": "Shop capacity +50%, viral hits don't waste customers above capacity.",
+      "ip_cost": 10,
+      "prerequisites": [
+        "operations_inventory_1"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 1,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "shop_capacity_bonus",
+          "value": 0.5
+        },
+        {
+          "type": "viral_overflow_protection",
+          "value": 1
+        }
+      ],
+      "icon": "tech_operations_inventory2_icon"
+    },
+    {
+      "id": "operations_inventory_3",
+      "branch": "operations",
+      "name": "Just-In-Time Mastery",
+      "description": "Shop capacity +100%. Capacity scales with shop level.",
+      "ip_cost": 25,
+      "prerequisites": [
+        "operations_inventory_2"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 1,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "shop_capacity_bonus",
+          "value": 1.0
+        },
+        {
+          "type": "capacity_scales_with_level",
+          "value": 1
+        }
+      ],
+      "icon": "tech_operations_inventory3_icon"
+    },
+    {
+      "id": "operations_quality_1",
+      "branch": "operations",
+      "name": "Quality Control I",
+      "description": "Reputation gain +50%, max reputation cap +0.5 stars.",
+      "ip_cost": 5,
+      "prerequisites": [],
+      "tier": 1,
+      "ui_position": {
+        "x": 2,
+        "y": 0
+      },
+      "effects": [
+        {
+          "type": "reputation_gain_bonus",
+          "value": 0.5
+        },
+        {
+          "type": "reputation_cap_bonus",
+          "value": 0.5
+        }
+      ],
+      "icon": "tech_operations_quality1_icon"
+    },
+    {
+      "id": "operations_quality_2",
+      "branch": "operations",
+      "name": "Quality Control II",
+      "description": "Reputation never decreases below current value when PR Crisis fails.",
+      "ip_cost": 15,
+      "prerequisites": [
+        "operations_quality_1"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 2,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "reputation_floor_lock",
+          "value": 1
+        }
+      ],
+      "icon": "tech_operations_quality2_icon"
+    },
+    {
+      "id": "operations_multi_store_1",
+      "branch": "operations",
+      "name": "Multi-Store Strategy I",
+      "description": "First instance of each shop category is 25% cheaper.",
+      "ip_cost": 6,
+      "prerequisites": [
+        "operations_logistics_1"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": -1,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "shop_unlock_discount_first_instance",
+          "value": 0.25
+        }
+      ],
+      "icon": "tech_operations_multistore1_icon"
+    },
+    {
+      "id": "operations_multi_store_2",
+      "branch": "operations",
+      "name": "Multi-Store Strategy II",
+      "description": "Build same-category shops at 50% off.",
+      "ip_cost": 18,
+      "prerequisites": [
+        "operations_multi_store_1"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": -1,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "shop_duplicate_discount",
+          "value": 0.5
+        }
+      ],
+      "icon": "tech_operations_multistore2_icon"
+    },
+    {
+      "id": "operations_premium_locations",
+      "branch": "operations",
+      "name": "Premium Locations",
+      "description": "Highest level shop in each category gets +50% income.",
+      "ip_cost": 22,
+      "prerequisites": [
+        "operations_logistics_2",
+        "operations_quality_1"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 0.5,
+        "y": 3
+      },
+      "effects": [
+        {
+          "type": "top_shop_per_category_bonus",
+          "value": 0.5
+        }
+      ],
+      "icon": "tech_operations_premium_icon"
+    },
+    {
+      "id": "operations_supply_chain_dom",
+      "branch": "operations",
+      "name": "Supply Chain Domination",
+      "description": "AI Competitors lose 5% market share when you upgrade Logistics tech.",
+      "ip_cost": 30,
+      "prerequisites": [
+        "operations_logistics_3",
+        "operations_multi_store_2"
+      ],
+      "tier": 4,
+      "ui_position": {
+        "x": -0.5,
+        "y": 3
+      },
+      "effects": [
+        {
+          "type": "competitor_market_share_drain_on_upgrade",
+          "value": 0.05
+        }
+      ],
+      "icon": "tech_operations_supply_icon"
+    },
+    {
+      "id": "hr_training_1",
+      "branch": "hr_automation",
+      "name": "Training Program I",
+      "description": "Manager max level 10 → 12.",
+      "ip_cost": 4,
+      "prerequisites": [],
+      "tier": 1,
+      "ui_position": {
+        "x": 0,
+        "y": 0
+      },
+      "effects": [
+        {
+          "type": "manager_max_level_bonus",
+          "value": 2
+        }
+      ],
+      "icon": "tech_hr_training1_icon"
+    },
+    {
+      "id": "hr_training_2",
+      "branch": "hr_automation",
+      "name": "Training Program II",
+      "description": "Manager max level 12 → 15.",
+      "ip_cost": 12,
+      "prerequisites": [
+        "hr_training_1"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 0,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "manager_max_level_bonus",
+          "value": 3
+        }
+      ],
+      "icon": "tech_hr_training2_icon"
+    },
+    {
+      "id": "hr_training_3",
+      "branch": "hr_automation",
+      "name": "Mentorship Program",
+      "description": "Manager max level 15 → 20. Each manager provides +1% bonus to OTHER managers.",
+      "ip_cost": 30,
+      "prerequisites": [
+        "hr_training_2"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 0,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "manager_max_level_bonus",
+          "value": 5
+        },
+        {
+          "type": "manager_cross_synergy_bonus",
+          "value": 0.01
+        }
+      ],
+      "icon": "tech_hr_training3_icon"
+    },
+    {
+      "id": "hr_software",
+      "branch": "hr_automation",
+      "name": "HR Software",
+      "description": "Auto-hire managers when affordable. Auto-level managers when IP available (toggleable).",
+      "ip_cost": 8,
+      "prerequisites": [
+        "hr_training_1"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 1,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "auto_manager_hire",
+          "value": 1
+        },
+        {
+          "type": "auto_manager_level_up",
+          "value": 1
+        }
+      ],
+      "icon": "tech_hr_software_icon"
+    },
+    {
+      "id": "hr_robotics_1",
+      "branch": "hr_automation",
+      "name": "Robotics I",
+      "description": "Each shop without a manager auto-runs at 50% efficiency.",
+      "ip_cost": 10,
+      "prerequisites": [],
+      "tier": 2,
+      "ui_position": {
+        "x": 2,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "managerless_shop_efficiency",
+          "value": 0.5
+        }
+      ],
+      "icon": "tech_hr_robotics1_icon"
+    },
+    {
+      "id": "hr_robotics_2",
+      "branch": "hr_automation",
+      "name": "Robotics II",
+      "description": "Managerless shops at 80% efficiency. Robot upgrade = +30% income on shops with manager.",
+      "ip_cost": 22,
+      "prerequisites": [
+        "hr_robotics_1"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 2,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "managerless_shop_efficiency",
+          "value": 0.8
+        },
+        {
+          "type": "managed_shop_robot_bonus",
+          "value": 0.3
+        }
+      ],
+      "icon": "tech_hr_robotics2_icon"
+    },
+    {
+      "id": "hr_robotics_3",
+      "branch": "hr_automation",
+      "name": "Full Automation",
+      "description": "All shops run at 100% even without managers. Managers become 'specialists' adding +50% on top.",
+      "ip_cost": 50,
+      "prerequisites": [
+        "hr_robotics_2",
+        "hr_training_3"
+      ],
+      "tier": 4,
+      "ui_position": {
+        "x": 2,
+        "y": 3
+      },
+      "effects": [
+        {
+          "type": "managerless_shop_efficiency",
+          "value": 1.0
+        },
+        {
+          "type": "manager_specialist_bonus",
+          "value": 0.5
+        }
+      ],
+      "icon": "tech_hr_robotics3_icon"
+    },
+    {
+      "id": "hr_synergy_bonus",
+      "branch": "hr_automation",
+      "name": "Department Synergy",
+      "description": "Same-category managers stack: each adds +10% income to others in same category.",
+      "ip_cost": 14,
+      "prerequisites": [
+        "hr_training_2"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": -1,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "same_category_manager_synergy",
+          "value": 0.1
+        }
+      ],
+      "icon": "tech_hr_synergy_icon"
+    },
+    {
+      "id": "hr_ai_manager",
+      "branch": "hr_automation",
+      "name": "AI Manager",
+      "description": "Unlocks special manager: AI-001. Adapts to your strategy and provides dynamic bonuses.",
+      "ip_cost": 40,
+      "prerequisites": [
+        "hr_robotics_2",
+        "hr_software"
+      ],
+      "tier": 4,
+      "ui_position": {
+        "x": 1,
+        "y": 3
+      },
+      "effects": [
+        {
+          "type": "unlock_special_manager",
+          "value": "mgr_special_ai001"
+        }
+      ],
+      "icon": "tech_hr_ai_icon"
+    },
+    {
+      "id": "innovation_drone_delivery",
+      "branch": "innovation",
+      "name": "Drone Delivery",
+      "description": "All shop income +25%. Special: customer count from campaigns +50%.",
+      "ip_cost": 15,
+      "prerequisites": [],
+      "tier": 1,
+      "ui_position": {
+        "x": 0,
+        "y": 0
+      },
+      "effects": [
+        {
+          "type": "global_income_multiplier",
+          "value": 0.25
+        },
+        {
+          "type": "campaign_customer_count_bonus",
+          "value": 0.5
+        }
+      ],
+      "icon": "tech_innovation_drone_icon"
+    },
+    {
+      "id": "innovation_quantum_sales",
+      "branch": "innovation",
+      "name": "Quantum Sales",
+      "description": "Each shop has 0.1% chance per second to trigger 'quantum sale' (x100 income for 1 sec).",
+      "ip_cost": 25,
+      "prerequisites": [
+        "innovation_drone_delivery"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 0,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "quantum_sale_chance",
+          "value": 0.001
+        },
+        {
+          "type": "quantum_sale_multiplier",
+          "value": 100.0
+        }
+      ],
+      "icon": "tech_innovation_quantum_icon"
+    },
+    {
+      "id": "innovation_ai_analytics",
+      "branch": "innovation",
+      "name": "AI Analytics",
+      "description": "Auto-launches the most profitable available campaign every 10 seconds.",
+      "ip_cost": 20,
+      "prerequisites": [],
+      "tier": 1,
+      "ui_position": {
+        "x": 1,
+        "y": 0
+      },
+      "effects": [
+        {
+          "type": "auto_launch_optimal_campaign",
+          "value": 10.0,
+          "value_unit": "seconds"
+        }
+      ],
+      "icon": "tech_innovation_ai_icon"
+    },
+    {
+      "id": "innovation_time_compression",
+      "branch": "innovation",
+      "name": "Time Compression",
+      "description": "Offline cap 8h → 24h. Offline efficiency 50% → 75%.",
+      "ip_cost": 30,
+      "prerequisites": [
+        "innovation_ai_analytics"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 1,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "offline_cap_hours_bonus",
+          "value": 16
+        },
+        {
+          "type": "offline_efficiency_bonus",
+          "value": 0.25
+        }
+      ],
+      "icon": "tech_innovation_time_icon"
+    },
+    {
+      "id": "innovation_empire_building",
+      "branch": "innovation",
+      "name": "Empire Building",
+      "description": "Unlocks geographic expansion: copy of empire in second city. Generates 50% of main empire income.",
+      "ip_cost": 35,
+      "prerequisites": [
+        "innovation_drone_delivery",
+        "innovation_ai_analytics"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 0.5,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "unlock_second_city",
+          "value": 0.5
+        }
+      ],
+      "icon": "tech_innovation_empire_icon"
+    },
+    {
+      "id": "innovation_cross_promotion",
+      "branch": "innovation",
+      "name": "Cross-Promotion",
+      "description": "Each shop earns +2% per OTHER unique shop category owned (synergy).",
+      "ip_cost": 20,
+      "prerequisites": [],
+      "tier": 1,
+      "ui_position": {
+        "x": 2,
+        "y": 0
+      },
+      "effects": [
+        {
+          "type": "cross_category_synergy",
+          "value": 0.02
+        }
+      ],
+      "icon": "tech_innovation_cross_icon"
+    },
+    {
+      "id": "innovation_subscription_model",
+      "branch": "innovation",
+      "name": "Subscription Model",
+      "description": "Convert 30% of income into 'subscription revenue' that doubles offline earnings.",
+      "ip_cost": 25,
+      "prerequisites": [
+        "innovation_cross_promotion"
+      ],
+      "tier": 2,
+      "ui_position": {
+        "x": 2,
+        "y": 1
+      },
+      "effects": [
+        {
+          "type": "subscription_revenue_share",
+          "value": 0.3
+        },
+        {
+          "type": "subscription_offline_multiplier",
+          "value": 2.0
+        }
+      ],
+      "icon": "tech_innovation_subscription_icon"
+    },
+    {
+      "id": "innovation_competitor_acquisition",
+      "branch": "innovation",
+      "name": "Hostile Takeover",
+      "description": "Acquire AI Competitors at 50% discount cost. Each acquisition gives permanent +5% global income.",
+      "ip_cost": 30,
+      "prerequisites": [
+        "innovation_empire_building"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 0.5,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "competitor_acquisition_discount",
+          "value": 0.5
+        },
+        {
+          "type": "per_competitor_acquired_bonus",
+          "value": 0.05
+        }
+      ],
+      "icon": "tech_innovation_takeover_icon"
+    },
+    {
+      "id": "innovation_global_brand",
+      "branch": "innovation",
+      "name": "Global Brand",
+      "description": "Reputation cap 5 → 10 stars. Brand recognition propagates to all new shops.",
+      "ip_cost": 40,
+      "prerequisites": [
+        "innovation_subscription_model",
+        "innovation_empire_building"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 1.5,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "reputation_cap_bonus",
+          "value": 5.0
+        },
+        {
+          "type": "new_shop_starting_reputation",
+          "value": 4.0
+        }
+      ],
+      "icon": "tech_innovation_brand_icon"
+    },
+    {
+      "id": "innovation_prestige_master",
+      "branch": "innovation",
+      "name": "Prestige Master",
+      "description": "Each prestige gives +20% IP. Prestige threshold reduced by 25%.",
+      "ip_cost": 35,
+      "prerequisites": [
+        "innovation_quantum_sales"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 0,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "prestige_ip_multiplier",
+          "value": 0.2
+        },
+        {
+          "type": "prestige_threshold_reduction",
+          "value": 0.25
+        }
+      ],
+      "icon": "tech_innovation_prestige_icon"
+    },
+    {
+      "id": "innovation_singularity",
+      "branch": "innovation",
+      "name": "The Singularity",
+      "description": "ENDGAME: All multipliers DOUBLED. Cross-category synergy is 5x. Quantum sales x10 stronger.",
+      "ip_cost": 100,
+      "prerequisites": [
+        "innovation_prestige_master",
+        "innovation_global_brand",
+        "innovation_competitor_acquisition",
+        "innovation_time_compression"
+      ],
+      "tier": 5,
+      "ui_position": {
+        "x": 1,
+        "y": 4
+      },
+      "effects": [
+        {
+          "type": "global_multiplier_doubled",
+          "value": 2.0
+        },
+        {
+          "type": "cross_category_synergy_multiplier",
+          "value": 5.0
+        },
+        {
+          "type": "quantum_sale_amplifier",
+          "value": 10.0
+        }
+      ],
+      "icon": "tech_innovation_singularity_icon",
+      "is_endgame": true,
+      "achievement_unlock": "ach_singularity_reached"
+    },
+    {
+      "id": "marketing_meme_lord",
+      "branch": "marketing",
+      "name": "Meme Lord Status",
+      "description": "TikTok Viral campaigns have 5% chance to spawn 'Mega Viral' regardless of normal viral roll.",
+      "ip_cost": 25,
+      "prerequisites": [
+        "marketing_viral_studio_2",
+        "marketing_brand_building_2"
+      ],
+      "tier": 4,
+      "ui_position": {
+        "x": -0.5,
+        "y": 3
+      },
+      "effects": [
+        {
+          "type": "campaign_mega_viral_chance",
+          "target_campaigns": [
+            "tiktok_viral"
+          ],
+          "value": 0.05
+        }
+      ],
+      "icon": "tech_marketing_meme_icon"
+    },
+    {
+      "id": "marketing_celebrity_endorsement",
+      "branch": "marketing",
+      "name": "Celebrity Endorsement",
+      "description": "Influencer campaigns have a 2% chance to trigger 'A-List Celebrity' (10x normal viral effect).",
+      "ip_cost": 18,
+      "prerequisites": [
+        "marketing_influencer_network"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 1.5,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "campaign_special_viral_event",
+          "target_campaigns": [
+            "influencer"
+          ],
+          "value": 0.02,
+          "event_multiplier": 10.0
+        }
+      ],
+      "icon": "tech_marketing_celebrity_icon"
+    },
+    {
+      "id": "operations_24_7_operations",
+      "branch": "operations",
+      "name": "24/7 Operations",
+      "description": "Shops never close. Income/sec is constant (vs reduced at IRL night times).",
+      "ip_cost": 15,
+      "prerequisites": [
+        "operations_inventory_2"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 1.5,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "remove_time_of_day_modifier",
+          "value": 1
+        }
+      ],
+      "icon": "tech_operations_24_7_icon"
+    },
+    {
+      "id": "hr_remote_work",
+      "branch": "hr_automation",
+      "name": "Remote Work Revolution",
+      "description": "Managers work cross-category at 30% efficiency on secondary categories.",
+      "ip_cost": 18,
+      "prerequisites": [
+        "hr_synergy_bonus"
+      ],
+      "tier": 4,
+      "ui_position": {
+        "x": -0.5,
+        "y": 3
+      },
+      "effects": [
+        {
+          "type": "manager_cross_category_efficiency",
+          "value": 0.3
+        }
+      ],
+      "icon": "tech_hr_remote_icon"
+    },
+    {
+      "id": "innovation_blockchain_loyalty",
+      "branch": "innovation",
+      "name": "Blockchain Loyalty (lol)",
+      "description": "(Yes, we know.) Customer retention +50%. Each customer comes back 1.5x more.",
+      "ip_cost": 22,
+      "prerequisites": [
+        "innovation_subscription_model"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 2.5,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "customer_retention_bonus",
+          "value": 0.5
+        }
+      ],
+      "icon": "tech_innovation_blockchain_icon"
+    },
+    {
+      "id": "operations_eco_friendly",
+      "branch": "operations",
+      "name": "Eco-Friendly Operations",
+      "description": "+1.0 reputation cap. PR Crisis events 50% less frequent.",
+      "ip_cost": 12,
+      "prerequisites": [
+        "operations_quality_2"
+      ],
+      "tier": 3,
+      "ui_position": {
+        "x": 2.5,
+        "y": 2
+      },
+      "effects": [
+        {
+          "type": "reputation_cap_bonus",
+          "value": 1.0
+        },
+        {
+          "type": "pr_crisis_frequency_reduction",
+          "value": 0.5
+        }
+      ],
+      "icon": "tech_operations_eco_icon"
+    }
+  ]
+}

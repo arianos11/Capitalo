@@ -1,0 +1,437 @@
+{
+  "schema_version": 1,
+  "description": "Managers automate shops and provide bonuses. Each manager is a one-time purchase with 10 levels of upgrades. Each shop slot can have one manager. Some managers are 'global' and affect entire empire.",
+  "global_constants": {
+    "max_level": 10,
+    "level_bonus_per_level": 0.10,
+    "base_multiplier_when_hired": 2.0,
+    "level_upgrade_cost_growth": 1.5,
+    "manager_count_target_total": 30
+  },
+  "manager_archetypes": [
+    "auto_seller",
+    "speed_demon",
+    "quality_guru",
+    "viral_specialist",
+    "negotiator",
+    "loyalty_builder"
+  ],
+  "managers": [
+    {
+      "id": "mgr_fashion_alex",
+      "name": "Alex the Trendsetter",
+      "name_localized_key": "manager.alex.name",
+      "tagline": "Always wears next season's fashion. From the future, basically.",
+      "category_assignment": "fashion",
+      "archetype": "auto_seller",
+      "portrait_sprite": "portrait_alex",
+      "walk_animation": "walk_alex",
+      "hire_cost": 2500,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "trendsetter",
+          "name": "Trendsetter",
+          "description": "+30% income during weekend (Sat/Sun real-time)",
+          "type": "scheduled_bonus",
+          "value": 0.3,
+          "trigger": "weekend"
+        }
+      ],
+      "voice_lines_localized_key": "manager.alex.voicelines"
+    },
+    {
+      "id": "mgr_fashion_sara",
+      "name": "Sara Couture",
+      "name_localized_key": "manager.sara.name",
+      "tagline": "Old-school Parisian elegance. Doesn't smile. Always profitable.",
+      "category_assignment": "fashion",
+      "archetype": "quality_guru",
+      "portrait_sprite": "portrait_sara",
+      "walk_animation": "walk_sara",
+      "hire_cost": 12000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "luxury_appeal",
+          "name": "Luxury Appeal",
+          "description": "+50% reputation gain on Fashion shops",
+          "type": "reputation_multiplier",
+          "value": 0.5,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.sara.voicelines"
+    },
+    {
+      "id": "mgr_fashion_jay",
+      "name": "Jay Hypebeast",
+      "name_localized_key": "manager.jay.name",
+      "tagline": "Knows every drop, every collab. Lives on resell apps.",
+      "category_assignment": "fashion",
+      "archetype": "viral_specialist",
+      "portrait_sprite": "portrait_jay",
+      "walk_animation": "walk_jay",
+      "hire_cost": 75000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "drop_culture",
+          "name": "Drop Culture",
+          "description": "+10% viral chance on all marketing campaigns",
+          "type": "viral_chance_bonus",
+          "value": 0.10,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.jay.voicelines"
+    },
+    {
+      "id": "mgr_tech_kai",
+      "name": "Kai Codebreaker",
+      "name_localized_key": "manager.kai.name",
+      "tagline": "Speaks Python. Negotiates with suppliers in JSON.",
+      "category_assignment": "tech",
+      "archetype": "auto_seller",
+      "portrait_sprite": "portrait_kai",
+      "walk_animation": "walk_kai",
+      "hire_cost": 50000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "early_adopter",
+          "name": "Early Adopter",
+          "description": "+25% income during product launches (random buffs every 4h)",
+          "type": "random_event_bonus",
+          "value": 0.25,
+          "trigger": "tech_launch_event"
+        }
+      ],
+      "voice_lines_localized_key": "manager.kai.voicelines"
+    },
+    {
+      "id": "mgr_tech_nova",
+      "name": "Nova Streamer",
+      "name_localized_key": "manager.nova.name",
+      "tagline": "100k followers on Twitch. Still asks 'what's an Excel?'.",
+      "category_assignment": "tech",
+      "archetype": "viral_specialist",
+      "portrait_sprite": "portrait_nova",
+      "walk_animation": "walk_nova",
+      "hire_cost": 250000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "stream_overlay",
+          "name": "Stream Overlay",
+          "description": "+15% income on Tech shops AND boosts customer count on TikTok campaigns by +20%",
+          "type": "compound_bonus",
+          "value": 0.15,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.nova.voicelines"
+    },
+    {
+      "id": "mgr_tech_dr_chen",
+      "name": "Dr. Chen",
+      "name_localized_key": "manager.dr_chen.name",
+      "tagline": "PhD in computer science. Fixes printers as a hobby.",
+      "category_assignment": "tech",
+      "archetype": "quality_guru",
+      "portrait_sprite": "portrait_dr_chen",
+      "walk_animation": "walk_dr_chen",
+      "hire_cost": 1500000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "research_synergy",
+          "name": "Research Synergy",
+          "description": "+1 free tech tree node every 5 prestiges (cumulative)",
+          "type": "meta_progression_bonus",
+          "value": 1,
+          "trigger": "every_5_prestiges"
+        }
+      ],
+      "voice_lines_localized_key": "manager.dr_chen.voicelines"
+    },
+    {
+      "id": "mgr_food_chef_marco",
+      "name": "Chef Marco",
+      "name_localized_key": "manager.marco.name",
+      "tagline": "Michelin star. Yells at staff. Never wears a hairnet.",
+      "category_assignment": "food",
+      "archetype": "quality_guru",
+      "portrait_sprite": "portrait_chef_marco",
+      "walk_animation": "walk_chef_marco",
+      "hire_cost": 200000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "michelin_chase",
+          "name": "Michelin Chase",
+          "description": "+1.0 stars max reputation cap on Food shops (6 stars instead of 5)",
+          "type": "reputation_cap_bonus",
+          "value": 1.0,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.marco.voicelines"
+    },
+    {
+      "id": "mgr_food_betty",
+      "name": "Betty Burgerflip",
+      "name_localized_key": "manager.betty.name",
+      "tagline": "Started as a fry cook. Now runs 50 locations. Hustler.",
+      "category_assignment": "food",
+      "archetype": "speed_demon",
+      "portrait_sprite": "portrait_betty",
+      "walk_animation": "walk_betty",
+      "hire_cost": 800000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "fast_food_speed",
+          "name": "Fast Food Speed",
+          "description": "Customer service speed +50% on Food shops (more throughput)",
+          "type": "throughput_bonus",
+          "value": 0.5,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.betty.voicelines"
+    },
+    {
+      "id": "mgr_food_chef_yuki",
+      "name": "Chef Yuki",
+      "name_localized_key": "manager.yuki.name",
+      "tagline": "Sushi master. Calm. Profitable. 30 years training.",
+      "category_assignment": "food",
+      "archetype": "loyalty_builder",
+      "portrait_sprite": "portrait_yuki",
+      "walk_animation": "walk_yuki",
+      "hire_cost": 5000000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "regular_customer_loyalty",
+          "name": "Regular Customer Loyalty",
+          "description": "Every hour without PR crisis, +1% to Food income (caps at +50%)",
+          "type": "stacking_streak_bonus",
+          "value": 0.01,
+          "max_stacks": 50,
+          "trigger": "no_crisis_hourly"
+        }
+      ],
+      "voice_lines_localized_key": "manager.yuki.voicelines"
+    },
+    {
+      "id": "mgr_global_hr_diana",
+      "name": "Diana the HR Boss",
+      "name_localized_key": "manager.diana.name",
+      "tagline": "Hires for vibes. Fires with paperwork. Controls the org chart.",
+      "category_assignment": "global",
+      "archetype": "auto_seller",
+      "portrait_sprite": "portrait_diana",
+      "walk_animation": "walk_diana",
+      "hire_cost": 5000000,
+      "base_income_multiplier": 1.5,
+      "perks": [
+        {
+          "id": "manager_synergy",
+          "name": "Manager Synergy",
+          "description": "All other managers gain +5% effectiveness per Diana level (max +50% at lvl 10)",
+          "type": "manager_global_bonus",
+          "value": 0.05,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.diana.voicelines"
+    },
+    {
+      "id": "mgr_global_cfo_robin",
+      "name": "Robin the CFO",
+      "name_localized_key": "manager.robin.name",
+      "tagline": "Knows where every cent goes. Optimizes everything.",
+      "category_assignment": "global",
+      "archetype": "negotiator",
+      "portrait_sprite": "portrait_robin",
+      "walk_animation": "walk_robin",
+      "hire_cost": 15000000,
+      "base_income_multiplier": 1.5,
+      "perks": [
+        {
+          "id": "cost_reduction",
+          "name": "Cost Reduction",
+          "description": "Shop level upgrade costs reduced by 10% (15% at lvl 10)",
+          "type": "upgrade_cost_reduction",
+          "value": 0.10,
+          "value_at_max_level": 0.15,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.robin.voicelines"
+    },
+    {
+      "id": "mgr_home_ikea_inge",
+      "name": "Inge from Stockholm",
+      "name_localized_key": "manager.inge.name",
+      "tagline": "Allen wrench connoisseur. Furniture comes flat-packed for a reason.",
+      "category_assignment": "home",
+      "archetype": "negotiator",
+      "portrait_sprite": "portrait_inge",
+      "walk_animation": "walk_inge",
+      "hire_cost": 20000000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "flat_pack_optimization",
+          "name": "Flat-Pack Optimization",
+          "description": "Home shop unlock cost for new locations -25%",
+          "type": "shop_unlock_discount",
+          "value": 0.25,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.inge.voicelines"
+    },
+    {
+      "id": "mgr_beauty_madame_blanc",
+      "name": "Madame Blanc",
+      "name_localized_key": "manager.blanc.name",
+      "tagline": "French. Glamorous. Discreetly judging your skincare routine.",
+      "category_assignment": "beauty",
+      "archetype": "loyalty_builder",
+      "portrait_sprite": "portrait_blanc",
+      "walk_animation": "walk_blanc",
+      "hire_cost": 100000000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "vip_clientele",
+          "name": "VIP Clientele",
+          "description": "+100% income from premium specializations (Luxury Perfume, Premium Apple-style, etc.)",
+          "type": "specialization_multiplier",
+          "value": 1.0,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.blanc.voicelines"
+    },
+    {
+      "id": "mgr_books_old_man_pete",
+      "name": "Old Man Pete",
+      "name_localized_key": "manager.pete.name",
+      "tagline": "Owned the bookstore for 40 years. Smells like coffee and leather.",
+      "category_assignment": "books",
+      "archetype": "quality_guru",
+      "portrait_sprite": "portrait_pete",
+      "walk_animation": "walk_pete",
+      "hire_cost": 2000000000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "cult_following",
+          "name": "Cult Following",
+          "description": "Books shops are immune to PR Crisis events",
+          "type": "crisis_immunity",
+          "value": 1,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.pete.voicelines"
+    },
+    {
+      "id": "mgr_toys_uncle_max",
+      "name": "Uncle Max",
+      "name_localized_key": "manager.uncle_max.name",
+      "tagline": "Never had kids. Has 3000 board games. The fun uncle.",
+      "category_assignment": "toys",
+      "archetype": "viral_specialist",
+      "portrait_sprite": "portrait_uncle_max",
+      "walk_animation": "walk_uncle_max",
+      "hire_cost": 200000000000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "christmas_legend",
+          "name": "Christmas Legend",
+          "description": "Christmas event boost is doubled (e.g., x5 instead of x2.5)",
+          "type": "event_multiplier_boost",
+          "value": 2.0,
+          "trigger": "christmas_event"
+        }
+      ],
+      "voice_lines_localized_key": "manager.uncle_max.voicelines"
+    },
+    {
+      "id": "mgr_sports_coach_terry",
+      "name": "Coach Terry",
+      "name_localized_key": "manager.coach_terry.name",
+      "tagline": "Former Olympic athlete. Whistle around neck. Always.",
+      "category_assignment": "sports",
+      "archetype": "speed_demon",
+      "portrait_sprite": "portrait_coach_terry",
+      "walk_animation": "walk_coach_terry",
+      "hire_cost": 20000000000000,
+      "base_income_multiplier": 2.0,
+      "perks": [
+        {
+          "id": "olympic_streak",
+          "name": "Olympic Streak",
+          "description": "During Olympic event (4 years IRL), Sports income x10",
+          "type": "rare_event_mega_bonus",
+          "value": 10.0,
+          "trigger": "olympic_games_event"
+        }
+      ],
+      "voice_lines_localized_key": "manager.coach_terry.voicelines"
+    },
+    {
+      "id": "mgr_luxury_lady_v",
+      "name": "Lady V",
+      "name_localized_key": "manager.lady_v.name",
+      "tagline": "Mononymous. Elite clientele only. Knows every billionaire's pet.",
+      "category_assignment": "luxury",
+      "archetype": "loyalty_builder",
+      "portrait_sprite": "portrait_lady_v",
+      "walk_animation": "walk_lady_v",
+      "hire_cost": 2000000000000000,
+      "base_income_multiplier": 2.5,
+      "perks": [
+        {
+          "id": "private_clientele",
+          "name": "Private Clientele",
+          "description": "Luxury shops earn passively at 50% rate even when player has zero customers",
+          "type": "passive_floor_income",
+          "value": 0.5,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.lady_v.voicelines"
+    },
+    {
+      "id": "mgr_marketplace_zara",
+      "name": "Zara the Architect",
+      "name_localized_key": "manager.zara.name",
+      "tagline": "Builds marketplaces like Lego. Has equity in 3 unicorns.",
+      "category_assignment": "marketplace",
+      "archetype": "auto_seller",
+      "portrait_sprite": "portrait_zara",
+      "walk_animation": "walk_zara",
+      "hire_cost": 200000000000000000,
+      "base_income_multiplier": 3.0,
+      "perks": [
+        {
+          "id": "ecosystem_synergy",
+          "name": "Ecosystem Synergy",
+          "description": "Marketplace synergy bonus (the +5% per category) is doubled to +10% per category",
+          "type": "endgame_synergy_boost",
+          "value": 2.0,
+          "trigger": "always"
+        }
+      ],
+      "voice_lines_localized_key": "manager.zara.voicelines"
+    }
+  ]
+}
