@@ -78,3 +78,16 @@ Idle pixel tycoon mobile game. Marketing-driven core loop (zamiast tap-to-collec
 ## Prompts hint
 
 Mów po polsku w body promptów OK, ale code/commits/error messages **EN**. Krótkie sesje, jeden cel per session, `/clear` między.
+
+## Models policy
+
+- **Opus** (`claude-opus-4-7`): planning, architecture decisions, code review, debug root-cause, balance design
+- **Sonnet** (`claude-sonnet-4-6`): implementation, refactor, tests, docs writing, scene wiring
+- **Haiku**: skip — GDScript edge cases (BigNumber arithmetic, save versioning, EventBus signal contracts) wymagają rozsądku którego brak
+
+### Dwustopniowy workflow
+
+1. **Sesja Opus** → plan mode (`Shift+Tab ×2`) → `/create-plan <feature>` lub manual research → plan ląduje w `docs/plans/<NNN>-<slug>.md` → commit
+2. **Nowa sesja Sonnet** → `/model claude-sonnet-4-6` → `/implement-plan docs/plans/<NNN>-<slug>.md` → faza-by-faza z review checkpointami
+
+Subagenty (`.claude/agents/*.md`) mają `model: sonnet` w frontmatter — Opus dispatch automatycznie używa Sonneta dla weryfikacji/review/tuningu.
