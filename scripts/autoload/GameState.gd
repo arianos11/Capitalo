@@ -77,6 +77,9 @@ var total_campaigns_launched: int = 0
 ## Total liczba viral hits (do achievementów).
 var total_viral_hits: int = 0
 
+## Map tutorial_step_id → true (step ukończony). Persisted w save.
+var tutorial_completed: Dictionary = {}
+
 
 # ==========================================================================
 # META / STATS
@@ -273,6 +276,7 @@ func to_dict() -> Dictionary:
 		"total_viral_hits": total_viral_hits,
 		"last_save_timestamp": Time.get_unix_time_from_system(),
 		"total_play_time_seconds": total_play_time_seconds,
+		"tutorial_completed": tutorial_completed,
 	}
 
 
@@ -300,6 +304,7 @@ func from_dict(data: Dictionary) -> void:
 	total_viral_hits = data.get("total_viral_hits", 0)
 	last_save_timestamp = data.get("last_save_timestamp", 0.0)
 	total_play_time_seconds = data.get("total_play_time_seconds", 0.0)
+	tutorial_completed = data.get("tutorial_completed", {})
 
 	is_dirty = false
 	EventBus.game_loaded.emit()

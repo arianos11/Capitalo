@@ -153,6 +153,14 @@ signal achievement_unlocked(achievement_id)
 ## Gracz nacisnął przycisk Settings w HUD.
 signal settings_requested
 
+## Tutorial step został wyświetlony graczowi.
+## param: step_id: String
+signal tutorial_step_shown(step_id)
+
+## Tutorial step został ukończony (dismiss przez gracza).
+## param: step_id: String
+signal tutorial_step_completed(step_id)
+
 
 # ==========================================================================
 # AI COMPETITORS / LIVE WORLD
