@@ -128,8 +128,8 @@ func _test_ips_changed_updates_label() -> void:
 	if ips_label:
 		_eb.income_per_second_changed.emit(BigNumber.from_float(50.0))
 		_assert(
-			ips_label.text.contains("$50.00") and ips_label.text.contains("/sec"),
-			"test_ips_changed_updates_label: label='%s' expected '$50.00/sec'" % ips_label.text
+			ips_label.text == "$50.0/sec",
+			"test_ips_changed_updates_label: label='%s' expected '$50.0/sec'" % ips_label.text
 		)
 	await _free_node(hud)
 	_reset_state()

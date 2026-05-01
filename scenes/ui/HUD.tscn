@@ -1,0 +1,44 @@
+[gd_scene load_steps=2 format=3 uid="uid://hud_capitalo"]
+
+[ext_resource type="Script" path="res://scenes/ui/HUD.gd" id="1_gd_hud"]
+
+[node name="HUD" type="Control"]
+script = ExtResource("1_gd_hud")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_bottom = 280.0
+grow_horizontal = 2
+grow_vertical = 1
+
+[node name="VBox" type="VBoxContainer" parent="."]
+offset_left = 40.0
+offset_top = 80.0
+offset_right = 1040.0
+offset_bottom = 280.0
+
+[node name="TitleRow" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="VBox/TitleRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CAPITALO"
+horizontal_alignment = 0
+
+[node name="SettingsButton" type="Button" parent="VBox/TitleRow"]
+layout_mode = 2
+custom_minimum_size = Vector2(80, 80)
+text = "S"
+
+[node name="CashLabel" type="Label" parent="VBox"]
+layout_mode = 2
+text = "$0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IPSLabel" type="Label" parent="VBox"]
+layout_mode = 2
+text = "$0/sec"
+horizontal_alignment = 1
+vertical_alignment = 1
