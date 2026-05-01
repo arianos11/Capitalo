@@ -6,12 +6,12 @@
 class_name HUD
 extends Control
 
+var _last_cash: String = ""
+var _last_ips: String = ""
+
 @onready var cash_label: Label = $VBox/CashLabel
 @onready var ips_label: Label = $VBox/IPSLabel
 @onready var settings_button: Button = $VBox/TitleRow/SettingsButton
-
-var _last_cash: String = ""
-var _last_ips: String = ""
 
 
 func _ready() -> void:
