@@ -2,28 +2,35 @@
 ## Tests for CityView scene: slot rendering, tap signals, EventBus subscription.
 ## Run: godot --headless --path . --script tests/CityViewTest.gd
 ##
-## Tests:
-##   1. test_loads_3_shop_slots     — CityView has 3 phase_1 ShopSlot children
-##   2. test_slot_empty_state       — Fashion slot shows "Buy: $0" when not owned
-##   3. test_slot_owned_state       — Fashion slot shows "Lvl 5" when owned at level 5
-##   4. test_tap_emits_signal_empty — Tapping empty slot emits shop_slot_tapped(id, "empty")
-##   5. test_tap_emits_signal_owned — Tapping owned slot emits shop_slot_tapped(id, "owned")
-##   6. test_subscribes_shop_purchased — shop_purchased signal flips slot to owned
+## extends SceneTree: script IS the main loop, await process_frame works,
+## autoloads are available in _initialize() via get_root().get_node("...").
 
-extends Node
+extends SceneTree
+
+const _SignalSpy := preload("res://tests/_helpers/SignalSpy.gd")
+
+## Cached autoload refs — set in _initialize().
+var _gs   # GameState
+var _eb   # EventBus
 
 var passed: int = 0
 var failed: int = 0
 var failures: Array[String] = []
 
 
-func _ready() -> void:
+func _initialize() -> void:
+	_gs = get_root().get_node_or_null("GameState")
+	_eb = get_root().get_node_or_null("EventBus")
+	if _gs == null or _eb == null:
+		push_error("[CityViewTest] Autoloads not found — run with --path .")
+		quit(1)
+		return
 	print("[CityViewTest] Starting 6 tests...")
-	_run_tests()
+	_run_tests()  # fire-and-forget async coroutine
 
 
 func _run_tests() -> void:
-	await get_tree().process_frame
+	await process_frame  # wait for tree to settle
 
 	await _test_loads_3_shop_slots()
 	await _test_slot_empty_state()
@@ -33,7 +40,7 @@ func _run_tests() -> void:
 	await _test_subscribes_shop_purchased()
 
 	_print_results()
-	get_tree().quit(1 if failed > 0 else 0)
+	quit(1 if failed > 0 else 0)
 
 
 # ==========================================================================
@@ -60,18 +67,18 @@ func _make_cv() -> Node:
 		_assert(false, "CityView.tscn loads from res://")
 		return null
 	var cv = packed.instantiate()
-	add_child(cv)
+	get_root().add_child(cv)  # _ready() called synchronously
 	return cv
 
 
 func _free_node(n: Node) -> void:
 	if n and is_instance_valid(n):
 		n.queue_free()
-	await get_tree().process_frame
+	await process_frame
 
 
 func _reset_state() -> void:
-	GameState.shops.clear()
+	_gs.shops.clear()
 
 
 # ==========================================================================
@@ -110,7 +117,7 @@ func _test_slot_empty_state() -> void:
 
 func _test_slot_owned_state() -> void:
 	_reset_state()
-	GameState.shops["fashion"] = {
+	_gs.shops["fashion"] = {
 		"level": 5,
 		"specialization": "",
 		"manager_id": "",
@@ -121,7 +128,7 @@ func _test_slot_owned_state() -> void:
 		_reset_state()
 		return
 	var fashion_slot = cv.call("get_slot", "fashion")
-	_assert(fashion_slot != null, "test_slot_owned_state: fashion slot exists in _slots dict")
+	_assert(fashion_slot != null, "test_slot_owned_state: fashion slot in _slots dict")
 	if fashion_slot:
 		var level_label = fashion_slot.get_node_or_null("HBox/InfoBox/LevelLabel") as Label
 		_assert(level_label != null, "test_slot_owned_state: LevelLabel exists")
@@ -139,8 +146,8 @@ func _test_tap_emits_signal_empty() -> void:
 	var cv = _make_cv()
 	if cv == null:
 		return
-	var spy = SignalSpy.new()
-	EventBus.shop_slot_tapped.connect(spy.on_2)
+	var spy = _SignalSpy.new()
+	_eb.shop_slot_tapped.connect(spy.on_2)
 
 	var fashion_slot = cv.call("get_slot", "fashion")
 	_assert(fashion_slot != null, "test_tap_emits_signal_empty: fashion slot found")
@@ -152,13 +159,13 @@ func _test_tap_emits_signal_empty() -> void:
 			"test_tap_emits_signal_empty: args=%s expected ['fashion','empty']" % str(spy.last_args)
 		)
 
-	EventBus.shop_slot_tapped.disconnect(spy.on_2)
+	_eb.shop_slot_tapped.disconnect(spy.on_2)
 	await _free_node(cv)
 
 
 func _test_tap_emits_signal_owned() -> void:
 	_reset_state()
-	GameState.shops["fashion"] = {
+	_gs.shops["fashion"] = {
 		"level": 1,
 		"specialization": "",
 		"manager_id": "",
@@ -168,8 +175,8 @@ func _test_tap_emits_signal_owned() -> void:
 	if cv == null:
 		_reset_state()
 		return
-	var spy = SignalSpy.new()
-	EventBus.shop_slot_tapped.connect(spy.on_2)
+	var spy = _SignalSpy.new()
+	_eb.shop_slot_tapped.connect(spy.on_2)
 
 	var fashion_slot = cv.call("get_slot", "fashion")
 	_assert(fashion_slot != null, "test_tap_emits_signal_owned: fashion slot found")
@@ -181,7 +188,7 @@ func _test_tap_emits_signal_owned() -> void:
 			"test_tap_emits_signal_owned: args=%s expected ['fashion','owned']" % str(spy.last_args)
 		)
 
-	EventBus.shop_slot_tapped.disconnect(spy.on_2)
+	_eb.shop_slot_tapped.disconnect(spy.on_2)
 	await _free_node(cv)
 	_reset_state()
 
@@ -199,12 +206,12 @@ func _test_subscribes_shop_purchased() -> void:
 			"test_subscribes_shop_purchased: initially empty"
 		)
 		# purchase_shop emits shop_purchased synchronously → CityView._on_shop_purchased runs
-		GameState.purchase_shop("fashion")
+		_gs.purchase_shop("fashion")
 		_assert(
 			fashion_slot.call("is_owned"),
 			"test_subscribes_shop_purchased: owned after shop_purchased signal"
 		)
-		GameState.shops.clear()
+		_gs.shops.clear()
 
 	await _free_node(cv)
 

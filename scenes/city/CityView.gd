@@ -10,7 +10,7 @@ extends VBoxContainer
 const SHOP_SLOT_SCENE := preload("res://scenes/city/ShopSlot.tscn")
 const PHASE_1_SHOP_COUNT := 3
 
-## shop_id → ShopSlot node
+## shop_id → ShopSlot node (typed as Node to avoid class_name scope issues)
 var _slots: Dictionary = {}
 
 
@@ -27,8 +27,8 @@ func _exit_tree() -> void:
 		EventBus.shop_upgraded.disconnect(_on_shop_upgraded)
 
 
-## Returns the ShopSlot for the given shop_id, or null if not found.
-func get_slot(shop_id: String) -> ShopSlot:
+## Returns the ShopSlot node for the given shop_id, or null if not found.
+func get_slot(shop_id: String) -> Node:
 	return _slots.get(shop_id, null)
 
 
@@ -49,20 +49,19 @@ func _build_slots() -> void:
 
 
 func _create_slot(shop_data: Dictionary) -> void:
-	var slot := SHOP_SLOT_SCENE.instantiate() as ShopSlot
+	var slot = SHOP_SLOT_SCENE.instantiate()
+	add_child(slot)  # _ready() runs here → @onready vars initialised before setup()
 	var shop_id: String = shop_data.get("id", "")
 	var is_owned: bool = GameState.has_shop(shop_id)
 	var level: int = GameState.get_shop_level(shop_id)
 	var ips: BigNumber = EconomyManager.calculate_shop_income(shop_id) if is_owned \
 			else BigNumber.from_float(0.0)
-
 	slot.setup(shop_data, is_owned, level, ips)
-	add_child(slot)
 	_slots[shop_id] = slot
 
 
 func _on_shop_purchased(shop_id: String) -> void:
-	var slot := get_slot(shop_id)
+	var slot = get_slot(shop_id)
 	if slot == null:
 		return
 	var level := GameState.get_shop_level(shop_id)
@@ -71,7 +70,7 @@ func _on_shop_purchased(shop_id: String) -> void:
 
 
 func _on_shop_upgraded(shop_id: String, new_level: int) -> void:
-	var slot := get_slot(shop_id)
+	var slot = get_slot(shop_id)
 	if slot == null:
 		return
 	var ips := EconomyManager.calculate_shop_income(shop_id)
