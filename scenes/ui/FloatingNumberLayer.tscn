@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://floating_number_layer"]
+
+[ext_resource type="Script" path="res://scenes/ui/FloatingNumberLayer.gd" id="1_fnlayer"]
+
+[node name="FloatingNumberLayer" type="CanvasLayer"]
+layer = 5
+script = ExtResource("1_fnlayer")
