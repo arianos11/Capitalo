@@ -1,0 +1,39 @@
+[gd_scene load_steps=2 format=3 uid="uid://shop_slot_capitalo"]
+
+[ext_resource type="Script" path="res://scenes/city/ShopSlot.gd" id="1_shopslot"]
+
+[node name="ShopSlot" type="PanelContainer"]
+custom_minimum_size = Vector2(0, 120)
+script = ExtResource("1_shopslot")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="ShopIcon" type="ColorRect" parent="HBox"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_vertical = 4
+color = Color(0.3, 0.3, 0.3, 1)
+
+[node name="InfoBox" type="VBoxContainer" parent="HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="NameLabel" type="Label" parent="HBox/InfoBox"]
+layout_mode = 2
+text = "Shop Name"
+
+[node name="LevelLabel" type="Label" parent="HBox/InfoBox"]
+layout_mode = 2
+text = "Buy: $0"
+
+[node name="IPSLabel" type="Label" parent="HBox/InfoBox"]
+layout_mode = 2
+text = ""
+
+[node name="ActionButton" type="Button" parent="HBox"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_vertical = 4
+text = "+"
