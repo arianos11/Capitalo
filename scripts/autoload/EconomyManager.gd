@@ -107,6 +107,13 @@ func _process_income_tick(tick_seconds: float) -> void:
 	var income_this_tick = total_ips.multiply_by_float(tick_seconds)
 	GameState.add_money(income_this_tick)
 
+	for shop_id in GameState.shops.keys():
+		var shop_ips = calculate_shop_income(shop_id)
+		if shop_ips.is_zero():
+			continue
+		var shop_tick_income = shop_ips.multiply_by_float(tick_seconds)
+		EventBus.shop_earned.emit(shop_id, shop_tick_income)
+
 
 # ==========================================================================
 # INCOME CALCULATION
@@ -148,7 +155,7 @@ func calculate_shop_income(shop_id: String) -> BigNumber:
 		return BigNumber.from_float(0.0)
 
 	# Base income from definition
-	var base_income: float = shop_def.get("base_income_per_sec", 0.0)
+	var base_income: float = shop_def.get("base_income", 0.0)
 	var income = BigNumber.from_float(base_income)
 
 	# Level multiplier: 1.0 + (level-1) * 0.07 — z time also multiplicative growth
