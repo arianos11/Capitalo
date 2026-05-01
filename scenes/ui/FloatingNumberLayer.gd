@@ -50,17 +50,18 @@ func _on_shop_earned(shop_id: String, amount: BigNumber) -> void:
 	if idx == -1:
 		return
 
-	var spawn_x: float = slot.global_position.x + slot.get("size", Vector2.ZERO).x / 2.0
-	var spawn_y: float = slot.global_position.y + SPAWN_OFFSET.y
-	var start_pos := Vector2(spawn_x, spawn_y)
+	var slot_size: Variant = slot.get("size")
+	var half_width: float = (slot_size as Vector2).x / 2.0 if slot_size != null else 0.0
+	var spawn_pos := Vector2(slot.global_position.x + half_width, slot.global_position.y + SPAWN_OFFSET.y)
 	var text := "+%s" % Formatters.format_money(amount)
 
-	_animate_label(idx, start_pos, text)
+	_animate_label(idx, spawn_pos, text)
 
 
 func _find_slot(shop_id: String) -> Node:
 	for slot in get_tree().get_nodes_in_group("shop_slots"):
-		if slot.get("shop_id", "") == shop_id:
+		var id: Variant = slot.get("shop_id")
+		if id != null and str(id) == shop_id:
 			return slot
 	return null
 
