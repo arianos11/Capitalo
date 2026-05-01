@@ -71,8 +71,14 @@ static func make_maximal_dict() -> Dictionary:
 		"prestige_multiplier": 1.45,
 		"reputation": 77,
 		"shops": {
-			"fashion": {"level": 5, "specialization": "premium", "manager_id": "mgr_alex", "purchased_at": 1735000000.0},
-			"tech": {"level": 2, "specialization": "", "manager_id": "", "purchased_at": 1735001000.0},
+			"fashion": {
+				"level": 5, "specialization": "premium",
+				"manager_id": "mgr_alex", "purchased_at": 1735000000.0
+			},
+			"tech": {
+				"level": 2, "specialization": "",
+				"manager_id": "", "purchased_at": 1735001000.0
+			},
 		},
 		"managers": {
 			"mgr_alex": {"hired": true, "level": 3, "assigned_to_shop": "fashion"},
