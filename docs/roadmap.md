@@ -22,7 +22,7 @@ Status legend: `[ ]` todo, `[~]` in progress, `[x]` done.
 - [x] **Scena CityView** — 3 sloty na sklepy (Fashion, Tech, Food), placeholder rectangles
 - [ ] **ShopBuilding** scene — sprite + level label + tap → opens upgrade modal
 - [ ] **ShopUpgradeModal** — cost, current income, "Upgrade" / "Buy"
-- [ ] **HUD** — cash label, IPS label, settings button
+- [x] **HUD** — cash label, IPS label, settings button
 - [ ] **Floating numbers** — pool 30 reusable labels, "+$Y" co tick nad sklepem
 - [ ] **Tutorial first-run** — "Tap the shop to buy your first store!"
 - [ ] **Save round-trip test** — quit → reopen → kasa + sklepy zachowane
