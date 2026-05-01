@@ -7,6 +7,12 @@
 extends Node
 
 # ==========================================================================
+# CONSTANTS
+# ==========================================================================
+
+const SFX_PLAYER_POOL_SIZE: int = 8
+
+# ==========================================================================
 # CONFIG
 # ==========================================================================
 
@@ -21,7 +27,6 @@ var sfx_muted: bool = false
 
 var _music_player: AudioStreamPlayer
 var _sfx_players: Array[AudioStreamPlayer] = []
-const SFX_PLAYER_POOL_SIZE: int = 8
 
 # ==========================================================================
 # INIT
@@ -54,7 +59,7 @@ func _ready() -> void:
 # ==========================================================================
 
 func play_sfx(sfx_path: String, volume_offset_db: float = 0.0) -> void:
-	if sfx_muted:
+	if _is_headless() or sfx_muted:
 		return
 	# Find idle player
 	for p in _sfx_players:
@@ -70,8 +75,8 @@ func play_sfx(sfx_path: String, volume_offset_db: float = 0.0) -> void:
 	# All players busy — just drop the sound (acceptable for SFX)
 
 
-func play_music(music_path: String, fade_in_seconds: float = 0.5) -> void:
-	if music_muted:
+func play_music(music_path: String, _fade_in_seconds: float = 0.5) -> void:
+	if _is_headless() or music_muted:
 		return
 	var stream = load(music_path)
 	if stream == null:
@@ -83,9 +88,19 @@ func play_music(music_path: String, fade_in_seconds: float = 0.5) -> void:
 	# TODO: fade-in tween
 
 
-func stop_music(fade_out_seconds: float = 0.5) -> void:
+func stop_music(_fade_out_seconds: float = 0.5) -> void:
+	if _is_headless():
+		return
 	# TODO: fade-out tween
 	_music_player.stop()
+
+
+# ==========================================================================
+# INTERNAL
+# ==========================================================================
+
+func _is_headless() -> bool:
+	return DisplayServer.get_name() == "headless"
 
 
 # ==========================================================================
