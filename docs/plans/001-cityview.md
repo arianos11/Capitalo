@@ -3,7 +3,7 @@
 **Milestone**: M1 Sprint 1 (Foundation)
 **Author**: Opus (planning)
 **Implementer**: Sonnet (executing)
-**Status**: ready for implementation
+**Status**: [x] DONE
 **Estimated complexity**: M (~2-3h Sonnet session)
 
 ---

@@ -19,7 +19,7 @@ Status legend: `[ ]` todo, `[~]` in progress, `[x]` done.
 - [x] `GameState.gd` autoload (money, shops, IP, prestige stub)
 - [x] `SaveSystem.gd` z JSON save/load + offline calc stub
 - [x] `EventBus.gd` z core sygnałami
-- [ ] **Scena CityView** — 3 sloty na sklepy (Fashion, Tech, Food), placeholder rectangles
+- [x] **Scena CityView** — 3 sloty na sklepy (Fashion, Tech, Food), placeholder rectangles
 - [ ] **ShopBuilding** scene — sprite + level label + tap → opens upgrade modal
 - [ ] **ShopUpgradeModal** — cost, current income, "Upgrade" / "Buy"
 - [ ] **HUD** — cash label, IPS label, settings button
