@@ -25,6 +25,7 @@ EconomyManager="*res://scripts/autoload/EconomyManager.gd"
 CampaignSystem="*res://scripts/autoload/CampaignSystem.gd"
 AudioManager="*res://scripts/autoload/AudioManager.gd"
 ModalController="*res://scripts/autoload/ModalController.gd"
+TutorialController="*res://scripts/autoload/TutorialController.gd"
 
 [debug]
 
