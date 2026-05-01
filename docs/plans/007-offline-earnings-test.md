@@ -3,7 +3,7 @@
 **Milestone**: M1 Sprint 1 (Foundation) — **OSTATNI deliverable M1**
 **Author**: Opus (planning)
 **Implementer**: Sonnet (executing)
-**Status**: ready for implementation
+**Status**: [x] DONE
 **Estimated complexity**: S (~1h Sonnet session)
 **Type**: pure test deliverable, **zero new game code** (preferred). Lekka API zmiana w SaveSystem dopuszczalna jeśli niezbędna do testowalności.
 
