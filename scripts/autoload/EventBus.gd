@@ -146,6 +146,9 @@ signal modal_closed(modal_name)
 ## param: achievement_id: String
 signal achievement_unlocked(achievement_id)
 
+## Gracz nacisnął przycisk Settings w HUD.
+signal settings_requested
+
 
 # ==========================================================================
 # AI COMPETITORS / LIVE WORLD
