@@ -54,6 +54,10 @@ signal shop_specialization_chosen(shop_id, spec_id)
 ## param: shop_id: String, slot_state: String ("empty" / "owned")
 signal shop_slot_tapped(shop_id, slot_state)
 
+## Próba zakupu/upgrade nie powiodła się (np. brak kasy).
+## param: shop_id: String, reason: String ("insufficient_funds" / "invalid_shop")
+signal shop_purchase_failed(shop_id, reason)
+
 
 # ==========================================================================
 # MANAGER SIGNALS
