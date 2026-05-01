@@ -6,12 +6,6 @@
 class_name ShopSlot
 extends PanelContainer
 
-@onready var shop_icon: ColorRect = $HBox/ShopIcon
-@onready var name_label: Label = $HBox/InfoBox/NameLabel
-@onready var level_label: Label = $HBox/InfoBox/LevelLabel
-@onready var ips_label: Label = $HBox/InfoBox/IPSLabel
-@onready var action_button: Button = $HBox/ActionButton
-
 var shop_id: String:
 	get:
 		return _shop_id
@@ -19,6 +13,12 @@ var shop_id: String:
 var _shop_id: String = ""
 var _shop_data: Dictionary = {}
 var _slot_state: String = "empty"
+
+@onready var shop_icon: ColorRect = $HBox/ShopIcon
+@onready var name_label: Label = $HBox/InfoBox/NameLabel
+@onready var level_label: Label = $HBox/InfoBox/LevelLabel
+@onready var ips_label: Label = $HBox/InfoBox/IPSLabel
+@onready var action_button: Button = $HBox/ActionButton
 
 
 func _ready() -> void:

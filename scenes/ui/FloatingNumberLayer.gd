@@ -52,7 +52,9 @@ func _on_shop_earned(shop_id: String, amount: BigNumber) -> void:
 
 	var slot_size: Variant = slot.get("size")
 	var half_width: float = (slot_size as Vector2).x / 2.0 if slot_size != null else 0.0
-	var spawn_pos := Vector2(slot.global_position.x + half_width, slot.global_position.y + SPAWN_OFFSET.y)
+	var spawn_pos := Vector2(
+		slot.global_position.x + half_width,
+		slot.global_position.y + SPAWN_OFFSET.y)
 	var text := "+%s" % Formatters.format_money(amount)
 
 	_animate_label(idx, spawn_pos, text)
@@ -89,7 +91,8 @@ func _animate_label(idx: int, start_pos: Vector2, text: String) -> void:
 
 	var tween := create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(label, "position:y", start_pos.y - FLOAT_DISTANCE, ANIMATION_DURATION).set_ease(Tween.EASE_OUT)
+	var target_y: float = start_pos.y - FLOAT_DISTANCE
+	tween.tween_property(label, "position:y", target_y, ANIMATION_DURATION).set_ease(Tween.EASE_OUT)
 	tween.tween_property(label, "modulate:a", 0.0, ANIMATION_DURATION)
 	tween.finished.connect(_on_tween_finished.bind(idx), CONNECT_ONE_SHOT)
 	_tweens[idx] = tween
