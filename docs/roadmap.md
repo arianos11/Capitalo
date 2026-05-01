@@ -20,8 +20,8 @@ Status legend: `[ ]` todo, `[~]` in progress, `[x]` done.
 - [x] `SaveSystem.gd` z JSON save/load + offline calc stub
 - [x] `EventBus.gd` z core sygnałami
 - [x] **Scena CityView** — 3 sloty na sklepy (Fashion, Tech, Food), placeholder rectangles
-- [ ] **ShopBuilding** scene — sprite + level label + tap → opens upgrade modal
-- [ ] **ShopUpgradeModal** — cost, current income, "Upgrade" / "Buy"
+- [x] **ShopBuilding** scene — sprite + level label + tap → opens upgrade modal (covered by ShopSlot for M1; sprite-based building → M5 polish)
+- [x] **ShopUpgradeModal** — cost, current income, "Upgrade" / "Buy"
 - [x] **HUD** — cash label, IPS label, settings button
 - [ ] **Floating numbers** — pool 30 reusable labels, "+$Y" co tick nad sklepem
 - [ ] **Tutorial first-run** — "Tap the shop to buy your first store!"
