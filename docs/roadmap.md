@@ -23,7 +23,7 @@ Status legend: `[ ]` todo, `[~]` in progress, `[x]` done.
 - [x] **ShopBuilding** scene — sprite + level label + tap → opens upgrade modal (covered by ShopSlot for M1; sprite-based building → M5 polish)
 - [x] **ShopUpgradeModal** — cost, current income, "Upgrade" / "Buy"
 - [x] **HUD** — cash label, IPS label, settings button
-- [ ] **Floating numbers** — pool 30 reusable labels, "+$Y" co tick nad sklepem
+- [x] **Floating numbers** — pool 30 reusable labels, "+$Y" co tick nad sklepem
 - [ ] **Tutorial first-run** — "Tap the shop to buy your first store!"
 - [ ] **Save round-trip test** — quit → reopen → kasa + sklepy zachowane
 - [ ] **Offline earnings test** — clock +2h → restart → dostań earnings
