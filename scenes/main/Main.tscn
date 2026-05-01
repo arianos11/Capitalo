@@ -16,6 +16,9 @@ color = Color(0.117647, 0.168627, 0.32549, 1)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="ModalLayer" type="CanvasLayer" parent="."]
+layer = 10
+
 [node name="HUD" parent="UI" instance=ExtResource("3_hud")]
 offset_left = 0.0
 offset_top = 0.0
