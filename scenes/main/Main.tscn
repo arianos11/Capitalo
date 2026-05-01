@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://capitalo_main_scene"]
+[gd_scene load_steps=4 format=3 uid="uid://capitalo_main_scene"]
 
 [ext_resource type="Script" path="res://scenes/main/Main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://scenes/city/CityView.tscn" id="2_cityview"]
 
 [sub_resource type="Theme" id="Theme_default"]
 
@@ -34,6 +35,12 @@ horizontal_alignment = 1
 layout_mode = 2
 text = "$0/sec"
 horizontal_alignment = 1
+
+[node name="CityView" parent="UI" instance=ExtResource("2_cityview")]
+offset_left = 40.0
+offset_top = 320.0
+offset_right = 1040.0
+offset_bottom = 1500.0
 
 [node name="Debug" type="VBoxContainer" parent="UI"]
 offset_left = 40.0

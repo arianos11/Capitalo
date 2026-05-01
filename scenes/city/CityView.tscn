@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://city_view_capitalo"]
+
+[ext_resource type="Script" path="res://scenes/city/CityView.gd" id="1_gd_cv"]
+
+[node name="CityView" type="VBoxContainer"]
+script = ExtResource("1_gd_cv")
