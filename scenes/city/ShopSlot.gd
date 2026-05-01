@@ -12,12 +12,17 @@ extends PanelContainer
 @onready var ips_label: Label = $HBox/InfoBox/IPSLabel
 @onready var action_button: Button = $HBox/ActionButton
 
+var shop_id: String:
+	get:
+		return _shop_id
+
 var _shop_id: String = ""
 var _shop_data: Dictionary = {}
 var _slot_state: String = "empty"
 
 
 func _ready() -> void:
+	add_to_group("shop_slots")
 	action_button.pressed.connect(_on_tapped)
 
 
