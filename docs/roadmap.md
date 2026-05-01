@@ -26,9 +26,11 @@ Status legend: `[ ]` todo, `[~]` in progress, `[x]` done.
 - [x] **Floating numbers** — pool 30 reusable labels, "+$Y" co tick nad sklepem
 - [x] **Tutorial first-run** — "Tap the shop to buy your first store!"
 - [x] **Save round-trip test** — quit → reopen → kasa + sklepy zachowane
-- [ ] **Offline earnings test** — clock +2h → restart → dostań earnings
+- [x] **Offline earnings test** — clock +2h → restart → dostań earnings
 
 **Acceptance**: kliknij 100 razy, zamknij grę, otwórz, kasa zachowana. BigNumberTest 🟢.
+
+**M1 COMPLETE — date: 2026-05-01**
 
 ### M2 — Sprint 2: Core Loop (Tydzień 3-4)
 
